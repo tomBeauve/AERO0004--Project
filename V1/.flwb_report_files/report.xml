@@ -1,0 +1,217 @@
+<FluentXMLReport>
+<version>
+Fluent
+Version: axi, dp, pbns, ske (axi, double precision, pressure-based, standard k-epsilon)
+Release: 25.2.0
+Title: 
+</version>
+
+<Models>
+
+Models
+------
+
+   Model                        Settings                              
+   ----------------------------------------------------------------
+   Space                        Axisymmetric                          
+   Time                         Steady                                
+   Viscous                      Standard k-epsilon turbulence model   
+   Wall Treatment               Enhanced Wall Treatment               
+   Heat Transfer                Disabled                              
+   Solidification and Melting   Disabled                              
+   Species                      Disabled                              
+   Coupled Dispersed Phase      Disabled                              
+   NOx Pollutants               Disabled                              
+   SOx Pollutants               Disabled                              
+   Soot                         Disabled                              
+   Mercury Pollutants           Disabled                              
+   Structure                    Disabled                              
+   Acoustics                    Disabled                              
+   Eulerian Wall Film           Disabled                              
+   Potential/Electrochemistry   Disabled                              
+   Multiphase                   Disabled                              
+
+</Models>
+
+<MaterialProperties>
+Material Properties
+-------------------
+
+   Material: re3500ub1 (fluid)
+
+      Property    Units      Method     Value(s)        
+      -----------------------------------------------
+      Density     kg/m^3     constant   1               
+      Viscosity   kg/(m s)   constant   5.7142857e-05   
+
+   Material: air (fluid)
+
+      Property    Units      Method     Value(s)     
+      --------------------------------------------
+      Density     kg/m^3     constant   1.225        
+      Viscosity   kg/(m s)   constant   1.7894e-05   
+
+   Material: aluminum (solid)
+
+      Property   Units    Method     Value(s)   
+      ---------------------------------------
+      Density    kg/m^3   constant   2719       
+
+</MaterialProperties>
+
+<CellZoneConditions>
+Cell Zone Conditions
+--------------------
+
+   Zones
+
+      name                  id   type    material    
+      --------------------------------------------
+      part_2-surface_body   3    fluid   re3500ub1   
+
+   Setup Conditions
+
+      part_2-surface_body
+
+         Condition       Value       
+         -------------------------
+         Material Name   re3500ub1   
+         Frame Motion?   no          
+         Mesh Motion?    no          
+
+</CellZoneConditions>
+
+<BoundaryConditions>
+Boundary Conditions
+-------------------
+
+   Zones
+
+      name               id   type              
+      ---------------------------------------
+      lateral            7    pressure-inlet    
+      outinterior        9    pressure-outlet   
+      outexterior        8    pressure-outlet   
+      centerlinetube     10   axis              
+      centerlinedomain   11   axis              
+      inlet              6    velocity-inlet    
+      walldomain         12   wall              
+      walltube           13   wall              
+
+   Setup Conditions
+
+      lateral
+
+         Condition   Value   
+         -----------------
+
+      outinterior
+
+         Condition   Value   
+         -----------------
+
+      outexterior
+
+         Condition   Value   
+         -----------------
+
+      centerlinetube
+
+         Condition   Value   
+         -----------------
+
+      centerlinedomain
+
+         Condition   Value   
+         -----------------
+
+      inlet
+
+         Condition            Value                         
+         ------------------------------------------------
+         Velocity Magnitude   (profile __expr__ uprofile)   
+
+      walldomain
+
+         Condition                  Value             
+         ------------------------------------------
+         Wall Motion                Stationary Wall   
+         Shear Boundary Condition   No Slip           
+
+      walltube
+
+         Condition                  Value             
+         ------------------------------------------
+         Wall Motion                Stationary Wall   
+         Shear Boundary Condition   No Slip           
+
+</BoundaryConditions>
+
+<SolverSettings>
+Solver Settings
+---------------
+
+   Equations
+
+      Equation     Solved   
+      -------------------
+      Flow         yes      
+      Turbulence   yes      
+
+   Numerics
+
+      Numeric                         Enabled   
+      ---------------------------------------
+      Absolute Velocity Formulation   yes       
+
+   Pseudo Time Explicit Relaxation Factors
+
+      Variable                     Relaxation Factor   
+      ----------------------------------------------
+      Density                      1                   
+      Body Forces                  1                   
+      Turbulent Kinetic Energy     0.75                
+      Turbulent Dissipation Rate   0.75                
+      Turbulent Viscosity          1                   
+      Explicit Momentum            0.5                 
+      Explicit Pressure            0.5                 
+
+   Linear Solver
+
+      Variable                     Solver Type   Termination Criterion   Residual Reduction Tolerance   
+      -----------------------------------------------------------------------------------------------
+      Flow                         F-Cycle       0.1                                                    
+      Turbulent Kinetic Energy     F-Cycle       0.1                                                    
+      Turbulent Dissipation Rate   F-Cycle       0.1                                                    
+
+   Pressure-Velocity Coupling
+
+      Parameter                               Value     
+      -----------------------------------------------
+      Type                                    Coupled   
+      Pseudo Time Method (Global Time Step)   yes       
+
+   Discretization Scheme
+
+      Variable                     Scheme                
+      ------------------------------------------------
+      Pressure                     Second Order          
+      Momentum                     Second Order Upwind   
+      Turbulent Kinetic Energy     Second Order Upwind   
+      Turbulent Dissipation Rate   First Order Upwind    
+
+   Solution Limits
+
+      Quantity                                   Limit    
+      -------------------------------------------------
+      Minimum Absolute Pressure [Pa]             1        
+      Maximum Absolute Pressure [Pa]             5e+10    
+      Minimum Static Temperature [K]             1        
+      Maximum Static Temperature [K]             5000     
+      Minimum Turb. Kinetic Energy [m^2/s^2]     1e-14    
+      Minimum Turb. Dissipation Rate [m^2/s^3]   1e-20    
+      Maximum Turb. Viscosity Ratio              100000   
+
+</SolverSettings>
+
+</FluentXMLReport>

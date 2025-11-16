@@ -1,0 +1,73 @@
+# encoding: utf-8
+# 2025 R2
+SetScriptVersion(Version="25.2.170")
+system1 = GetSystem(Name="FFF 1")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometry1.Exit()
+system1.Delete()
+system2 = GetSystem(Name="FFF")
+geometry2 = system2.GetContainer(ComponentName="Geometry")
+geometryProperties1 = geometry2.GetGeometryProperties()
+geometryProperties1.GeometryImportAnalysisType = "AnalysisType_2D"
+geometry2.Edit()
+Save(Overwrite=True)
+Save(Overwrite=True)
+designPoint1 = Parameters.GetDesignPoint(Name="0")
+parameter1 = Parameters.GetParameter(Name="P11")
+designPoint1.SetParameterExpression(
+    Parameter=parameter1,
+    Expression="2 [m]")
+geometryComponent1 = system2.GetComponent(Name="Geometry")
+geometryComponent1.Update(AllDependencies=True)
+geometryComponent1.Update(AllDependencies=True)
+geometryComponent1.Update(AllDependencies=True)
+meshComponent1 = system2.GetComponent(Name="Mesh")
+meshComponent1.Refresh()
+mesh1 = system2.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+geometryComponent1.Update(AllDependencies=True)
+meshComponent1.Refresh()
+mesh1.Edit()
+geometryComponent1.Update(AllDependencies=True)
+meshComponent1.Refresh()
+mesh1.Edit()
+mesh1.Edit()
+mesh1.Edit()
+Save(Overwrite=True)
+meshComponent1.Refresh()
+mesh1.Edit()
+meshComponent1.Refresh()
+mesh1.Edit()
+Save(Overwrite=True)
+meshComponent1.Refresh()
+mesh1.Edit()
+Save(Overwrite=True)
+geometry2.Exit()
+mesh1.Exit()
+Save(Overwrite=True)
+Reset()
+Extensions.UnloadExtension(
+    Id="5e7e01a6-8601-11e8-9f8c-28f10e13ffe6",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="5f463412-bd3e-484b-87e7-cbc0a665e474",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="ba012e44-4f35-4a97-aeff-8fe60efc33c9",
+    Version="25.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="7b0e9e84-396d-4099-9602-2ced9dddc253",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="20180725-3f81-49eb-9f31-41364844c769",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="f3e3da52-fb02-4910-8cc9-980efd047bc6",
+    Version="2023.1",
+    Format="Binary")

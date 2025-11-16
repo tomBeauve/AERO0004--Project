@@ -1,0 +1,12 @@
+﻿# 
+# This file contains the parameter values of the Design Points successfully updated by Ansys Workbench.
+# Project name: roundJetV1
+# Creation date: 11/14/2025 16:27:46
+# 
+# 11/14/2025 16:27:46
+# The parameters defined in the project are:
+# ,P4 - D [m],P2 - D_75 [m],P3 - D_5 [m],P5 - D_4 [m],P6 - D_64 [m],P7 - R [m]
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P4,P2,P3,P5,P6,P7
+DP 0,1,75,5,3,64,1
