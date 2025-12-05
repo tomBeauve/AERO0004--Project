@@ -27,7 +27,7 @@ def plot_normalized_inverse(input_path: str):
     v = df["velocity"].values
 
     v0 = v[0]
-    y = v/v0
+    y = v0/v
 
     plt.figure()
     plt.plot(x, y)
@@ -39,6 +39,6 @@ def plot_normalized_inverse(input_path: str):
     plt.show()
 
 
-convert_csv("V1/csvFiles/clvel.csv", "V1/csvFiles/centerlineVelFormatted.csv")
+convert_csv("V1/csvFiles/centerlineVel.csv", "V1/csvFiles/centerlineVelFormatted.csv")
 
 plot_normalized_inverse("V1/csvFiles/centerlineVelFormatted.csv")
