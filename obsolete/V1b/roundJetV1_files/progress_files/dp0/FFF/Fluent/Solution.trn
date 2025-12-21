@@ -1,0 +1,1371 @@
+Transcript Start Time:  13:38:00, 15 Nov 2025 Paris, Madrid 
+Current Directory: "C:\Users\tbeau\OneDrive\Documents\Universite\MASTER1\Turbulent Flows\Project"
+
+Build Time: Jun 16 2025 10:46:43 EDT 
+Executable Path: C:/PROGRA~1/ANSYSI~1/ANSYSS~1/v252/fluent/ntbin/win64/fluent.exe
+
+-------------------------------------------------------------------------------
+ID    Hostname    Core  O.S.         PID    Vendor                            
+-------------------------------------------------------------------------------
+n0*   laptop_tom  1/22  Windows-x64  24452  Intel(R) Core(TM) Ultra 9 185H    
+host  laptop_tom        Windows-x64  392    Intel(R) Core(TM) Ultra 9 185H    
+
+MPI Option Selected: intel
+Selected system interconnect: default
+-------------------------------------------------------------------------------
+
+Cortex Process ID: 23584 
+License Server Path: () 
+Fast-loading "C:\PROGRA~1\ANSYSI~1\ANSYSS~1\v252\fluent\fluent25.2.0\\addons\afd\lib\hdfio.bin"
+Done.
+Note: Rank = 0: Process affinity not being set (6).
+Reading setting file in cache: "C:\Users\tbeau\OneDrive\Documents\Universite\MASTER1\Turbulent Flows\Project\roundJetV1_files\dp0\FFF\Fluent\FFF.1.set"
+
+Reading from laptop_tom:"C:\Users\tbeau\OneDrive\Documents\Universite\MASTER1\Turbulent Flows\Project\roundJetV1_files\dp0\FFF\Fluent\FFF.1-Setup-Output.cas.h5" in NODE0 mode ...
+  Reading mesh ...
+       97230 cells,     1 cell zone  ...
+          97230 quadrilateral cells,  zone id: 3
+      196067 faces,    10 face zones ...
+         192828 2D interior faces,  zone id: 1
+             25 2D interior faces,  zone id: 2
+             25 2D velocity-inlet faces,  zone id: 6
+           1467 2D pressure-inlet faces,  zone id: 7
+             40 2D pressure-outlet faces,  zone id: 8
+             25 2D pressure-outlet faces,  zone id: 9
+             75 2D axis faces,  zone id: 10
+           1467 2D axis faces,  zone id: 11
+             40 2D wall faces,  zone id: 12
+             75 2D wall faces,  zone id: 13
+       98838 nodes,     1 node zone  ...
+  Done.
+
+
+
+Building...
+     mesh
+     materials,
+     interface,
+     domains,
+	mixture
+     zones,
+	walltube
+	walldomain
+	inlet
+	outtube
+	interior-part_2-surface_body
+	centerlinedomain
+	centerlinetube
+	outexterior
+	outinterior
+	lateral
+	part_2-surface_bodySetting part_2-surface_body (mixture) ... Done.
+ Setting zone id of part_2-surface_body to 3.
+ Setting zone id of lateral to 7.
+ Setting zone id of outinterior to 9.
+ Setting zone id of outexterior to 8.
+ Setting zone id of centerlinetube to 10.
+ Setting zone id of centerlinedomain to 11.
+ Setting zone id of interior-part_2-surface_body to 1.
+ Setting zone id of outtube to 2.
+ Setting zone id of inlet to 6.
+ Setting zone id of walldomain to 12.
+ Setting zone id of walltube to 13.
+Done.
+Setting part_2-surface_body (mixture) ... Done.
+Setting lateral (mixture) ... Done.
+Setting outinterior (mixture) ... Done.
+Setting outexterior (mixture) ... Done.
+Setting centerlinetube (mixture) ... Done.
+Setting centerlinedomain (mixture) ... Done.
+Setting interior-part_2-surface_body (mixture) ... Done.
+Setting outtube (mixture) ... Done.
+Setting inlet (mixture) ... Done.
+Setting walldomain (mixture) ... Done.
+Setting walltube (mixture) ... Done.
+
+     parallel,
+Done.
+
+Preparing mesh for display...
+Done.
+
+Setting Post Processing and Surfaces information ...	 Done.
+Reading C:\\Users\\tbeau\\OneDrive\\Documents\\Universite\\MASTER1\\Turbulent Flows\\Project\\roundJetV1_files\\dp0\\FFF\\Fluent\\FFF.1.ip...
+Reading IP data ...
+	x-coord
+	y-coord
+	pressure
+	x-velocity
+	y-velocity
+	k
+	epsilon
+	hyb_init-0
+	hyb_init-1
+  Done.
+  Initializing values...
+  Done.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+
+ Reversed flow on 231 faces (27.5% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (70.2% area) of pressure-outlet 8.
+     1  1.0000e+00  2.7534e-05  2.3672e-05  9.3726e-06  9.5798e-05  0:02:05  199
+
+ Reversed flow on 225 faces (26.8% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (65.4% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+     2  7.6838e-01  2.7636e-05  2.9892e-05  1.2859e-05  5.6433e-05  0:02:11  198
+
+ Reversed flow on 220 faces (26.3% area) of pressure-inlet 7.
+
+ Reversed flow on 13 faces (64.3% area) of pressure-outlet 8.
+     3  7.5731e-01  3.1639e-05  2.5274e-05  1.9074e-05  3.2541e-05  0:02:08  197
+
+ Reversed flow on 215 faces (25.7% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (71.9% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+     4  7.2471e-01  3.6879e-05  2.8654e-05  1.7698e-05  5.5048e-05  0:02:22  196
+
+ Reversed flow on 212 faces (25.4% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (74.4% area) of pressure-outlet 8.
+     5  7.2916e-01  2.5267e-05  2.7298e-05  1.8647e-05  4.9389e-05  0:02:11  195
+
+ Reversed flow on 210 faces (25.1% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+     6  5.7684e-01  2.4339e-05  2.2788e-05  1.5001e-05  2.7247e-05  0:02:00  194
+
+ Reversed flow on 208 faces (24.9% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+     7  4.6226e-01  3.5826e-05  1.7486e-05  2.6475e-05  1.0567e-05  0:02:05  193
+
+ Reversed flow on 205 faces (24.6% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+     8  4.8553e-01  4.9576e-05  1.6997e-05  5.9607e-05  1.7971e-05  0:01:58  192
+
+ Reversed flow on 202 faces (24.3% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (79.2% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+     9  5.7216e-01  5.1133e-05  2.0409e-05  1.1515e-04  6.9390e-05  0:02:19  191
+
+ Reversed flow on 203 faces (24.4% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (79.6% area) of pressure-outlet 8.
+
+ Reversed flow on 9 faces (40.9% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    10  6.0922e-01  1.0293e-04  4.7243e-05  2.2074e-04  1.7950e-04  0:02:34  190
+
+ Reversed flow on 207 faces (24.8% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (79.1% area) of pressure-outlet 8.
+
+ Reversed flow on 10 faces (45.8% area) of pressure-outlet 9.
+    11  5.4639e-01  1.1645e-04  7.0055e-05  2.3933e-04  2.4883e-04  0:02:21  189
+
+ Reversed flow on 212 faces (25.4% area) of pressure-inlet 7.
+
+ Reversed flow on 24 faces (80.7% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (22.5% area) of pressure-outlet 9.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    12  6.7059e-01  1.2170e-04  7.7878e-05  2.3353e-04  2.4354e-04  0:02:14  188
+
+ Reversed flow on 212 faces (25.4% area) of pressure-inlet 7.
+
+ Reversed flow on 26 faces (82.3% area) of pressure-outlet 8.
+    13  9.3418e-01  1.2357e-04  7.9143e-05  2.3105e-04  2.6092e-04  0:02:04  187
+
+ Reversed flow on 216 faces (25.8% area) of pressure-inlet 7.
+
+ Reversed flow on 29 faces (83.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    14  1.1694e+00  1.3314e-04  8.7559e-05  3.0086e-04  3.7502e-04  0:02:32  186
+
+ Reversed flow on 231 faces (27.5% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (73.0% area) of pressure-outlet 8.
+    15  1.5047e+00  1.4694e-04  9.8606e-05  2.8421e-04  3.1541e-04  0:02:19  185
+
+ Reversed flow on 232 faces (27.6% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (75.3% area) of pressure-outlet 8.
+    16  2.4019e+00  1.2292e-04  9.7164e-05  1.5269e-04  1.2419e-04  0:02:06  184
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (72.4% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (6.3% area) of pressure-outlet 9.
+    17  1.9944e+00  1.1082e-04  8.1235e-05  1.0962e-04  6.9589e-05  0:01:54  183
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (76.4% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (5.9% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    18  2.0291e+00  8.9093e-05  6.2009e-05  6.6085e-05  3.9734e-05  0:02:12  182
+
+ Reversed flow on 252 faces (29.7% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (71.0% area) of pressure-outlet 8.
+
+ Reversed flow on 1 face (2.6% area) of pressure-outlet 9.
+    19  1.9689e+00  6.5676e-05  4.4700e-05  4.0131e-05  1.8570e-05  0:01:59  181
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (72.0% area) of pressure-outlet 8.
+    20  1.8708e+00  6.0507e-05  3.9046e-05  4.1498e-05  1.8369e-05  0:01:51  180
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (66.5% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    21  2.0011e+00  4.7895e-05  3.3934e-05  2.1604e-05  7.1965e-06  0:01:51  179
+
+ Reversed flow on 245 faces (29.0% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (69.8% area) of pressure-outlet 8.
+    22  1.9658e+00  4.1634e-05  3.4254e-05  1.8275e-05  4.1679e-06  0:01:54  178
+
+ Reversed flow on 263 faces (30.9% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (71.8% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    23  1.2324e+01  1.0445e-04  2.4009e-04  1.6041e-05  2.9724e-06  0:01:55  177
+
+ Reversed flow on 237 faces (28.1% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (69.0% area) of pressure-outlet 8.
+    24  5.2114e+00  6.2779e-05  1.0304e-04  1.5330e-05  2.1769e-06  0:01:47  176
+
+ Reversed flow on 234 faces (27.8% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (71.5% area) of pressure-outlet 8.
+    25  2.9074e+00  4.5347e-05  5.5595e-05  1.4111e-05  1.4596e-06  0:01:46  175
+
+ Reversed flow on 231 faces (27.5% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (71.5% area) of pressure-outlet 8.
+    26  1.6581e+00  3.4798e-05  3.4835e-05  2.6150e-05  3.0074e-06  0:01:53  174
+
+ Reversed flow on 230 faces (27.4% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (75.8% area) of pressure-outlet 8.
+    27  1.0522e+00  4.7466e-05  2.7414e-05  3.7434e-05  6.0607e-06  0:01:47  173
+
+ Reversed flow on 232 faces (27.6% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (78.6% area) of pressure-outlet 8.
+    28  7.8162e-01  6.0023e-05  3.5969e-05  4.0452e-05  9.5146e-06  0:01:42  172
+
+ Reversed flow on 233 faces (27.7% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (78.1% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    29  7.1499e-01  6.0634e-05  3.1699e-05  5.0671e-05  1.1474e-05  0:01:56  171
+
+ Reversed flow on 236 faces (28.0% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (80.6% area) of pressure-outlet 8.
+    30  7.7499e-01  6.0531e-05  2.9496e-05  7.2947e-05  2.0755e-05  0:01:50  170
+
+ Reversed flow on 236 faces (28.0% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (80.4% area) of pressure-outlet 8.
+    31  8.3141e-01  7.5718e-05  3.6350e-05  1.6245e-04  9.0232e-05  0:01:45  169
+
+ Reversed flow on 242 faces (28.7% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (78.4% area) of pressure-outlet 8.
+
+ Reversed flow on 11 faces (50.7% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    32  9.4180e-01  1.3065e-04  7.6558e-05  2.3106e-04  1.8388e-04  0:01:59  168
+
+ Reversed flow on 250 faces (29.5% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (73.8% area) of pressure-outlet 8.
+
+ Reversed flow on 12 faces (55.6% area) of pressure-outlet 9.
+    33  1.0346e+00  1.2698e-04  8.9880e-05  2.9430e-04  4.0279e-04  0:01:50  167
+
+ Reversed flow on 253 faces (29.8% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (68.1% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (36.1% area) of pressure-outlet 9.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    34  1.0869e+00  1.6128e-04  1.0126e-04  4.5946e-04  6.8036e-04  0:01:41  166
+
+ Reversed flow on 256 faces (30.2% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (59.8% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (12.8% area) of pressure-outlet 9.
+    35  1.2467e+00  1.4614e-04  9.3656e-05  3.3319e-04  3.9375e-04  0:01:33  165
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 24 faces (58.9% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (8.4% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    36  1.3940e+00  1.1099e-04  7.5567e-05  1.6608e-04  1.5216e-04  0:01:47  164
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (53.8% area) of pressure-outlet 8.
+    37  1.5085e+00  7.6115e-05  5.7252e-05  9.3944e-05  6.5781e-05  0:01:42  163
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (57.0% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (3.7% area) of pressure-outlet 9.
+    38  1.7831e+00  7.7408e-05  5.3292e-05  8.3119e-05  5.4502e-05  0:01:35  162
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (57.8% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (6.3% area) of pressure-outlet 9.
+    39  1.8469e+00  7.0114e-05  5.0130e-05  5.6892e-05  3.2718e-05  0:01:28  161
+
+ Reversed flow on 252 faces (29.7% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (59.9% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (4.6% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    40  1.7583e+00  5.9600e-05  4.5121e-05  3.9718e-05  1.8405e-05  0:01:36  160
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (60.4% area) of pressure-outlet 8.
+
+ Reversed flow on 1 face (2.6% area) of pressure-outlet 9.
+    41  1.6722e+00  5.5572e-05  4.2481e-05  3.1001e-05  1.1281e-05  0:01:30  159
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (61.9% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    42  1.5790e+00  4.6611e-05  3.7904e-05  2.2846e-05  5.1897e-06  0:01:38  158
+
+ Reversed flow on 240 faces (28.4% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (56.7% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    43  1.4143e+00  4.5186e-05  3.7106e-05  1.7787e-05  3.1968e-06  0:02:01  157
+
+ Reversed flow on 237 faces (28.1% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (58.4% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    44  1.3290e+00  3.4806e-05  3.2619e-05  1.4508e-05  1.5299e-06  0:02:03  156
+
+ Reversed flow on 232 faces (27.6% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (63.9% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    45  1.1207e+00  3.2160e-05  3.0431e-05  1.2332e-05  9.2833e-07  0:02:16  155
+
+ Reversed flow on 228 faces (27.1% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (68.4% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    46  9.5366e-01  2.7905e-05  2.8219e-05  1.1640e-05  7.5351e-07  0:02:22  154
+
+ Reversed flow on 224 faces (26.7% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (73.2% area) of pressure-outlet 8.
+    47  7.8494e-01  2.3413e-05  2.4898e-05  1.3186e-05  7.3706e-07  0:02:10  153
+
+ Reversed flow on 221 faces (26.4% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (73.2% area) of pressure-outlet 8.
+    48  6.2528e-01  2.4733e-05  2.0715e-05  1.1762e-05  5.8764e-07  0:01:59  152
+
+ Reversed flow on 219 faces (26.1% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+    49  5.4881e-01  3.1392e-05  1.7339e-05  1.7995e-05  9.9812e-07  0:01:53  151
+
+ Reversed flow on 216 faces (25.8% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+    50  5.4222e-01  4.0000e-05  1.7306e-05  2.8992e-05  2.3361e-06  0:01:49  150
+
+ Reversed flow on 213 faces (25.5% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+    51  5.7270e-01  4.7282e-05  2.0630e-05  4.6518e-05  6.5062e-06  0:01:45  149
+
+ Reversed flow on 209 faces (25.0% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+    52  5.9490e-01  5.3505e-05  2.3276e-05  9.5164e-05  4.5978e-05  0:01:45  148
+
+ Reversed flow on 207 faces (24.8% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (19.3% area) of pressure-outlet 9.
+    53  5.3708e-01  9.9164e-05  4.1999e-05  1.9784e-04  1.4828e-04  0:01:44  147
+
+ Reversed flow on 214 faces (25.6% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (76.9% area) of pressure-outlet 8.
+
+ Reversed flow on 10 faces (46.5% area) of pressure-outlet 9.
+    54  6.0318e-01  1.2202e-04  6.1840e-05  2.6784e-04  2.5903e-04  0:01:39  146
+
+ Reversed flow on 222 faces (26.5% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (74.6% area) of pressure-outlet 8.
+
+ Reversed flow on 9 faces (40.9% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    55  9.1231e-01  1.5348e-04  8.4089e-05  3.4218e-04  4.1233e-04  0:01:44  145
+
+ Reversed flow on 227 faces (27.0% area) of pressure-inlet 7.
+
+ Reversed flow on 25 faces (80.2% area) of pressure-outlet 8.
+
+ Reversed flow on 7 faces (31.2% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    56  1.1774e+00  1.7856e-04  1.1329e-04  4.0323e-04  5.4247e-04  0:01:47  144
+
+ Reversed flow on 240 faces (28.4% area) of pressure-inlet 7.
+
+ Reversed flow on 28 faces (80.8% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (21.8% area) of pressure-outlet 9.
+    57  1.5864e+00  1.4606e-04  1.1308e-04  2.4760e-04  2.9144e-04  0:01:37  143
+
+ Reversed flow on 251 faces (29.6% area) of pressure-inlet 7.
+
+ Reversed flow on 27 faces (77.5% area) of pressure-outlet 8.
+    58  1.6060e+00  1.2182e-04  9.1374e-05  1.2566e-04  1.0333e-04  0:01:31  142
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 25 faces (74.8% area) of pressure-outlet 8.
+    59  1.9129e+00  8.8111e-05  6.3379e-05  6.5830e-05  3.5883e-05  0:01:22  141
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (76.3% area) of pressure-outlet 8.
+    60  2.0897e+00  7.0014e-05  4.8501e-05  5.1626e-05  3.4490e-05  0:01:16  140
+
+ Reversed flow on 251 faces (29.6% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (75.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    61  1.9816e+00  7.4879e-05  4.7611e-05  6.4027e-05  4.3223e-05  0:01:22  139
+
+ Reversed flow on 252 faces (29.7% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (70.7% area) of pressure-outlet 8.
+    62  1.8759e+00  6.1730e-05  4.1775e-05  3.3531e-05  1.8419e-05  0:01:16  138
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (68.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    63  1.9063e+00  5.5217e-05  3.6240e-05  2.7181e-05  1.1944e-05  0:01:24  137
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (73.3% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    64  1.5860e+00  5.7569e-05  3.5254e-05  2.9310e-05  9.6057e-06  0:01:30  136
+
+ Reversed flow on 243 faces (28.8% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (75.3% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    65  1.4259e+00  4.8395e-05  3.3804e-05  1.7806e-05  4.5096e-06  0:01:32  135
+
+ Reversed flow on 240 faces (28.4% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (74.9% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    66  1.2302e+00  3.7245e-05  3.0796e-05  1.5879e-05  2.3569e-06  0:01:38  134
+
+ Reversed flow on 238 faces (28.2% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (73.2% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    67  1.0385e+00  2.9093e-05  2.5753e-05  1.3640e-05  1.3685e-06  0:01:41  133
+
+ Reversed flow on 236 faces (28.0% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (84.0% area) of pressure-outlet 8.
+    68  8.8749e-01  3.0049e-05  2.0249e-05  1.0466e-05  8.4077e-07  0:01:29  132
+
+ Reversed flow on 235 faces (27.9% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (84.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    69  7.3594e-01  3.1451e-05  1.5620e-05  1.5779e-05  1.0770e-06  0:01:33  131
+
+ Reversed flow on 228 faces (27.0% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (82.9% area) of pressure-outlet 8.
+    70  6.4796e-01  3.4973e-05  1.5431e-05  2.2836e-05  2.0342e-06  0:01:28  130
+
+ Reversed flow on 218 faces (25.8% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (82.9% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    71  6.5564e-01  3.7136e-05  1.9117e-05  2.7739e-05  3.3169e-06  0:01:39  129
+
+ Reversed flow on 205 faces (24.2% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (82.9% area) of pressure-outlet 8.
+    72  5.7396e-01  3.7764e-05  2.2879e-05  3.3351e-05  4.5645e-06  0:01:30  128
+
+ Reversed flow on 201 faces (23.8% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (82.9% area) of pressure-outlet 8.
+    73  4.8346e-01  4.3243e-05  2.3813e-05  4.0130e-05  6.9524e-06  0:01:21  127
+
+ Reversed flow on 194 faces (22.9% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+    74  3.9430e-01  5.3213e-05  2.1288e-05  8.8919e-05  6.4475e-05  0:01:16  126
+
+ Reversed flow on 195 faces (23.0% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (9.5% area) of pressure-outlet 9.
+    75  4.3402e-01  8.4675e-05  2.8198e-05  2.1222e-04  1.8817e-04  0:01:12  125
+
+ Reversed flow on 202 faces (23.8% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (76.9% area) of pressure-outlet 8.
+
+ Reversed flow on 9 faces (40.9% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    76  5.9519e-01  1.0466e-04  5.5088e-05  2.4053e-04  2.2812e-04  0:01:18  124
+
+ Reversed flow on 204 faces (24.0% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (73.8% area) of pressure-outlet 8.
+
+ Reversed flow on 9 faces (40.9% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    77  7.0142e-01  1.0652e-04  6.5859e-05  2.0430e-04  2.1297e-04  0:01:24  123
+
+ Reversed flow on 194 faces (22.8% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (78.4% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (21.8% area) of pressure-outlet 9.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    78  8.7212e-01  1.0702e-04  6.8876e-05  1.9622e-04  2.0393e-04  0:01:16  122
+
+ Reversed flow on 197 faces (23.2% area) of pressure-inlet 7.
+
+ Reversed flow on 26 faces (80.4% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (8.4% area) of pressure-outlet 9.
+    79  9.8716e-01  8.3350e-05  6.1059e-05  1.1609e-04  9.9154e-05  0:01:08  121
+
+ Reversed flow on 209 faces (24.6% area) of pressure-inlet 7.
+
+ Reversed flow on 25 faces (79.3% area) of pressure-outlet 8.
+    80  1.0371e+00  8.7542e-05  5.7186e-05  9.4490e-05  7.7477e-05  0:01:03  120
+
+ Reversed flow on 220 faces (25.9% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (76.8% area) of pressure-outlet 8.
+    81  1.3332e+00  8.1618e-05  5.2799e-05  7.5930e-05  5.6771e-05  0:00:58  119
+
+ Reversed flow on 227 faces (26.7% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (74.4% area) of pressure-outlet 8.
+    82  1.5744e+00  7.7016e-05  5.0062e-05  9.4307e-05  8.0665e-05  0:00:55  118
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (75.9% area) of pressure-outlet 8.
+    83  1.6618e+00  1.1841e-04  7.5636e-05  1.8249e-04  1.4894e-04  0:00:58  117
+
+ Reversed flow on 259 faces (30.5% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (77.2% area) of pressure-outlet 8.
+    84  2.5486e+00  1.2233e-04  8.7443e-05  1.2968e-04  1.1683e-04  0:00:53  116
+
+ Reversed flow on 263 faces (30.9% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (76.0% area) of pressure-outlet 8.
+    85  1.8025e+00  8.1887e-05  5.9756e-05  5.4743e-05  2.6809e-05  0:00:49  115
+
+ Reversed flow on 264 faces (31.0% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (72.3% area) of pressure-outlet 8.
+    86  1.7888e+00  5.5500e-05  4.1089e-05  3.8507e-05  1.1446e-05  0:00:46  114
+
+ Reversed flow on 263 faces (30.9% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (72.2% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    87  1.7337e+00  5.2902e-05  3.3743e-05  3.3735e-05  1.2265e-05  0:01:09  113
+
+ Reversed flow on 266 faces (31.2% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (69.8% area) of pressure-outlet 8.
+    88  1.5936e+00  4.0086e-05  2.4224e-05  2.0278e-05  5.1319e-06  0:01:02  112
+
+ Reversed flow on 265 faces (31.1% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (71.8% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+    89  1.3856e+00  3.2902e-05  1.5998e-05  1.4836e-05  2.1331e-06  0:01:05  111
+
+ Reversed flow on 263 faces (30.9% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (75.7% area) of pressure-outlet 8.
+    90  1.1683e+00  3.3589e-05  1.2638e-05  1.4888e-05  1.3537e-06  0:01:00  110
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (74.1% area) of pressure-outlet 8.
+    91  1.0588e+00  3.7740e-05  1.4294e-05  2.6010e-05  2.2408e-06  0:00:56  109
+
+ Reversed flow on 252 faces (29.7% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (78.3% area) of pressure-outlet 8.
+    92  9.2699e-01  4.0896e-05  2.0808e-05  2.9934e-05  3.1849e-06  0:00:56  108
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (78.3% area) of pressure-outlet 8.
+    93  8.0408e-01  4.0034e-05  2.4755e-05  2.6559e-05  2.1892e-06  0:00:51  107
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+    94  6.1512e-01  3.9205e-05  2.0876e-05  4.9872e-05  4.7986e-06  0:00:49  106
+
+ Reversed flow on 250 faces (29.5% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (83.7% area) of pressure-outlet 8.
+    95  5.5653e-01  7.5594e-05  1.9193e-05  6.3192e-05  8.2524e-06  0:00:48  105
+
+ Reversed flow on 250 faces (29.5% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (83.9% area) of pressure-outlet 8.
+    96  6.2563e-01  8.5911e-05  2.4130e-05  1.2935e-04  1.0321e-04  0:00:49  104
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (79.4% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (13.1% area) of pressure-outlet 9.
+    97  7.9442e-01  1.2129e-04  3.0824e-05  4.3998e-04  2.8352e-04  0:00:48  103
+
+ Reversed flow on 276 faces (32.3% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (67.0% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (36.0% area) of pressure-outlet 9.
+    98  1.0094e+00  1.5793e-04  1.0028e-04  2.0973e-04  1.1368e-04  0:00:47  102
+
+ Reversed flow on 269 faces (31.6% area) of pressure-inlet 7.
+
+ Reversed flow on 24 faces (73.5% area) of pressure-outlet 8.
+
+ Reversed flow on 7 faces (32.0% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+    99  9.6247e-01  1.2605e-04  8.2074e-05  1.2288e-04  6.0530e-05  0:00:54  101
+
+ Reversed flow on 268 faces (31.5% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (66.2% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (23.9% area) of pressure-outlet 9.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   100  1.1337e+00  9.5264e-05  6.4724e-05  1.0850e-04  5.5376e-05  0:00:49  100
+
+ Reversed flow on 264 faces (31.0% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (73.2% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (19.3% area) of pressure-outlet 9.
+   101  1.3639e+00  8.8801e-05  5.1129e-05  9.5719e-05  6.0779e-05  0:00:46   99
+
+ Reversed flow on 260 faces (30.6% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (73.2% area) of pressure-outlet 8.
+
+ Reversed flow on 1 face (4.9% area) of pressure-outlet 9.
+   102  1.4884e+00  7.8413e-05  4.6263e-05  8.7257e-05  6.3028e-05  0:00:42   98
+
+ Reversed flow on 259 faces (30.5% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (61.5% area) of pressure-outlet 8.
+   103  1.4892e+00  7.0817e-05  4.6205e-05  7.6975e-05  6.0188e-05  0:00:40   97
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (59.3% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (6.3% area) of pressure-outlet 9.
+   104  1.4290e+00  7.7882e-05  4.7696e-05  9.8666e-05  8.2139e-05  0:00:39   96
+
+ Reversed flow on 257 faces (30.3% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (59.6% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (9.4% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   105  1.4659e+00  8.7043e-05  5.8726e-05  9.8831e-05  6.9789e-05  0:00:48   95
+
+ Reversed flow on 263 faces (30.9% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (57.9% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (5.7% area) of pressure-outlet 9.
+   106  1.6102e+00  6.3396e-05  5.4117e-05  5.6353e-05  2.9959e-05  0:00:48   94
+
+ Reversed flow on 261 faces (30.7% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (64.2% area) of pressure-outlet 8.
+
+ Reversed flow on 1 face (3.1% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   107  1.4992e+00  6.5362e-05  5.0995e-05  5.0456e-05  2.3363e-05  0:01:02   93
+
+ Reversed flow on 261 faces (30.7% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (59.7% area) of pressure-outlet 8.
+   108  1.5467e+00  4.5891e-05  4.0688e-05  2.8067e-05  8.3599e-06  0:00:57   92
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (68.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   109  1.4582e+00  3.7078e-05  3.1347e-05  1.6804e-05  3.5196e-06  0:01:10   91
+
+ Reversed flow on 256 faces (30.2% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (71.7% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   110  1.4561e+00  2.8437e-05  2.5384e-05  1.2033e-05  1.8410e-06  0:01:16   90
+
+ Reversed flow on 254 faces (30.0% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (70.1% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   111  1.2529e+00  2.1487e-05  1.9048e-05  9.7147e-06  1.0795e-06  0:01:18   89
+
+ Reversed flow on 251 faces (29.6% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (70.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   112  1.0431e+00  2.1388e-05  1.5819e-05  7.7340e-06  7.9149e-07  0:01:21   88
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (75.6% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   113  8.6153e-01  2.3485e-05  1.5526e-05  8.8288e-06  7.2103e-07  0:01:24   87
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (81.2% area) of pressure-outlet 8.
+   114  7.4131e-01  2.6894e-05  1.7509e-05  1.1390e-05  7.7610e-07  0:01:15   86
+
+ Reversed flow on 240 faces (28.4% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (79.2% area) of pressure-outlet 8.
+   115  6.5471e-01  2.8804e-05  1.9635e-05  1.9071e-05  2.2610e-06  0:01:09   85
+
+ Reversed flow on 237 faces (28.1% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (81.7% area) of pressure-outlet 8.
+   116  5.5737e-01  4.4008e-05  2.1170e-05  2.8588e-05  3.5355e-06  0:01:03   84
+
+ Reversed flow on 236 faces (28.0% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (81.0% area) of pressure-outlet 8.
+   117  5.6206e-01  4.0830e-05  2.4862e-05  1.8359e-05  2.2881e-06  0:00:58   83
+
+ Reversed flow on 236 faces (28.0% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (80.3% area) of pressure-outlet 8.
+   118  5.4391e-01  3.9752e-05  1.9410e-05  2.1445e-05  3.2613e-06  0:00:55   82
+
+ Reversed flow on 239 faces (28.3% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (79.7% area) of pressure-outlet 8.
+   119  5.3839e-01  4.6388e-05  1.8535e-05  2.7599e-05  4.7524e-06  0:00:51   81
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (74.5% area) of pressure-outlet 8.
+   120  6.7450e-01  5.0295e-05  1.9539e-05  4.6447e-05  7.8129e-06  0:00:49   80
+
+ Reversed flow on 243 faces (28.8% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (77.7% area) of pressure-outlet 8.
+   121  7.5166e-01  7.1691e-05  2.9429e-05  5.5238e-05  1.3290e-05  0:00:47   79
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (76.1% area) of pressure-outlet 8.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   122  8.3451e-01  6.3354e-05  3.6139e-05  8.3878e-05  3.3067e-05  0:00:45   78
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (73.9% area) of pressure-outlet 8.
+
+ Reversed flow on 7 faces (31.2% area) of pressure-outlet 9.
+   123  9.9804e-01  1.0221e-04  5.4968e-05  1.0885e-04  5.4320e-05  0:00:45   77
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (74.0% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (36.0% area) of pressure-outlet 9.
+   124  1.0673e+00  8.9892e-05  5.6284e-05  9.8528e-05  5.8157e-05  0:00:44   76
+
+ Reversed flow on 254 faces (30.0% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (73.2% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (13.7% area) of pressure-outlet 9.
+   125  1.3907e+00  7.4195e-05  4.8220e-05  9.5533e-05  6.2814e-05  0:00:42   75
+
+ Reversed flow on 252 faces (29.7% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (75.9% area) of pressure-outlet 8.
+   126  1.7707e+00  8.1450e-05  4.7731e-05  9.4536e-05  5.7159e-05  0:00:40   74
+
+ Reversed flow on 257 faces (30.3% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (69.7% area) of pressure-outlet 8.
+   127  1.6173e+00  7.0551e-05  3.9921e-05  5.5476e-05  3.2483e-05  0:00:39   73
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (74.7% area) of pressure-outlet 8.
+   128  1.7322e+00  6.5330e-05  4.2682e-05  6.5927e-05  4.2740e-05  0:00:47   72
+
+ Reversed flow on 262 faces (30.8% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (70.5% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (1.7% area) of pressure-outlet 9.
+   129  1.8519e+00  7.6041e-05  4.6863e-05  6.9030e-05  4.1696e-05  0:00:43   71
+
+ Reversed flow on 260 faces (30.6% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (75.9% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (3.7% area) of pressure-outlet 9.
+   130  1.7513e+00  7.0355e-05  4.0185e-05  4.4108e-05  2.0815e-05  0:00:44   70
+
+ Reversed flow on 262 faces (30.8% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (68.4% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (3.3% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   131  1.7292e+00  5.3592e-05  3.3520e-05  2.5677e-05  1.0614e-05  0:00:54   69
+
+ Reversed flow on 259 faces (30.5% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (72.1% area) of pressure-outlet 8.
+
+ Reversed flow on 1 face (2.0% area) of pressure-outlet 9.
+   132  1.6792e+00  4.6687e-05  3.0566e-05  2.5579e-05  1.0102e-05  0:00:49   68
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (75.8% area) of pressure-outlet 8.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   133  1.5388e+00  4.1286e-05  2.7932e-05  2.7183e-05  8.1840e-06  0:00:45   67
+
+ Reversed flow on 257 faces (30.3% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (71.2% area) of pressure-outlet 8.
+   134  1.2925e+00  3.6122e-05  2.2464e-05  1.5857e-05  3.1784e-06  0:00:41   66
+
+ Reversed flow on 255 faces (30.1% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (71.4% area) of pressure-outlet 8.
+   135  1.0784e+00  3.5571e-05  1.7887e-05  1.7201e-05  2.0828e-06  0:00:38   65
+
+ Reversed flow on 252 faces (29.7% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+   136  9.6117e-01  3.8232e-05  1.6222e-05  2.1028e-05  2.0510e-06  0:00:36   64
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+   137  8.7551e-01  3.7948e-05  1.7935e-05  1.7287e-05  1.6421e-06  0:00:34   63
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (74.8% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   138  7.2128e-01  3.0524e-05  1.7941e-05  2.9724e-05  4.6243e-06  0:00:41   62
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (77.7% area) of pressure-outlet 8.
+   139  6.0263e-01  5.3129e-05  2.9009e-05  3.6750e-05  6.6616e-06  0:00:38   61
+
+ Reversed flow on 243 faces (28.8% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (77.0% area) of pressure-outlet 8.
+   140  5.5579e-01  4.7894e-05  2.0664e-05  3.4930e-05  3.8880e-06  0:00:40   60
+
+ Reversed flow on 241 faces (28.5% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (79.3% area) of pressure-outlet 8.
+   141  5.7402e-01  5.2552e-05  1.9289e-05  5.0412e-05  8.4155e-06  0:00:43   59
+
+ Reversed flow on 240 faces (28.4% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (81.8% area) of pressure-outlet 8.
+   142  6.8717e-01  5.3290e-05  2.0477e-05  8.9492e-05  5.3289e-05  0:00:40   58
+
+ Reversed flow on 241 faces (28.5% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (84.9% area) of pressure-outlet 8.
+
+ Reversed flow on 6 faces (26.5% area) of pressure-outlet 9.
+   143  6.7381e-01  1.0372e-04  3.2797e-05  1.8151e-04  1.1534e-04  0:00:38   57
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (81.2% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (36.0% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   144  6.9840e-01  9.9319e-05  5.0086e-05  1.4682e-04  1.4149e-04  0:00:39   56
+
+ Reversed flow on 250 faces (29.5% area) of pressure-inlet 7.
+
+ Reversed flow on 24 faces (80.9% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (13.7% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   145  7.8056e-01  1.0112e-04  5.7956e-05  1.8537e-04  1.9450e-04  0:00:43   55
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (79.4% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   146  9.3920e-01  9.3120e-05  5.2176e-05  1.3121e-04  1.4363e-04  0:00:44   54
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 25 faces (79.5% area) of pressure-outlet 8.
+   147  1.0687e+00  8.5874e-05  4.7424e-05  1.3793e-04  1.4651e-04  0:00:46   53
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (77.2% area) of pressure-outlet 8.
+   148  2.9096e+00  8.2226e-05  8.9516e-05  7.7719e-05  7.3030e-05  0:00:42   52
+
+ Reversed flow on 245 faces (29.0% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (72.1% area) of pressure-outlet 8.
+   149  3.4325e+00  8.6647e-05  1.0436e-04  5.2699e-05  4.4536e-05  0:00:38   51
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (68.6% area) of pressure-outlet 8.
+   150  2.0865e+00  6.0364e-05  5.5893e-05  4.7418e-05  3.1424e-05  0:00:34   50
+
+ Reversed flow on 241 faces (28.5% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (68.5% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (9.4% area) of pressure-outlet 9.
+   151  1.6022e+00  5.8066e-05  4.3333e-05  5.1948e-05  3.8384e-05  0:00:30   49
+
+ Reversed flow on 238 faces (28.2% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (71.5% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (11.2% area) of pressure-outlet 9.
+   152  1.3289e+00  4.8602e-05  3.3999e-05  4.0387e-05  2.9929e-05  0:00:28   48
+
+ Reversed flow on 235 faces (27.9% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (71.9% area) of pressure-outlet 8.
+
+ Reversed flow on 3 faces (9.2% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   153  1.2001e+00  3.9413e-05  2.7404e-05  2.6130e-05  1.5224e-05  0:00:31   47
+
+ Reversed flow on 231 faces (27.5% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (67.9% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (6.6% area) of pressure-outlet 9.
+   154  1.0633e+00  3.8428e-05  2.5652e-05  2.9791e-05  1.8581e-05  0:00:29   46
+
+ Reversed flow on 227 faces (27.0% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (72.0% area) of pressure-outlet 8.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   155  1.0536e+00  5.1820e-05  3.4838e-05  3.5988e-05  2.0020e-05  0:00:26   45
+
+ Reversed flow on 226 faces (26.9% area) of pressure-inlet 7.
+
+ Reversed flow on 13 faces (63.8% area) of pressure-outlet 8.
+   156  1.1263e+00  4.0894e-05  3.6451e-05  1.9639e-05  8.5697e-06  0:00:25   44
+
+ Reversed flow on 224 faces (26.7% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (66.9% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   157  1.1510e+00  3.2491e-05  3.2354e-05  1.2627e-05  4.4759e-06  0:00:32   43
+
+ Reversed flow on 223 faces (26.6% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (65.6% area) of pressure-outlet 8.
+   158  8.7109e-01  2.7776e-05  2.5546e-05  1.0546e-05  2.9827e-06  0:00:29   42
+
+ Reversed flow on 223 faces (26.6% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (67.3% area) of pressure-outlet 8.
+   159  7.3442e-01  2.6524e-05  1.9181e-05  9.9065e-06  2.0217e-06  0:00:26   41
+
+ Reversed flow on 223 faces (26.6% area) of pressure-inlet 7.
+
+ Reversed flow on 13 faces (64.4% area) of pressure-outlet 8.
+   160  7.3188e-01  2.5354e-05  1.4756e-05  1.0715e-05  1.4099e-06  0:00:25   40
+
+ Reversed flow on 224 faces (26.7% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (68.3% area) of pressure-outlet 8.
+   161  6.6741e-01  2.6337e-05  1.1949e-05  1.3707e-05  1.1949e-06  0:00:24   39
+
+ Reversed flow on 224 faces (26.7% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (72.5% area) of pressure-outlet 8.
+   162  6.1411e-01  3.1890e-05  1.1876e-05  1.9582e-05  1.6285e-06  0:00:24   38
+
+ Reversed flow on 223 faces (26.6% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (72.5% area) of pressure-outlet 8.
+   163  5.6234e-01  3.6090e-05  1.2622e-05  2.5730e-05  2.2651e-06  0:00:23   37
+
+ Reversed flow on 222 faces (26.5% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+   164  5.4096e-01  3.5716e-05  1.5078e-05  2.6461e-05  2.5585e-06  0:00:22   36
+
+ Reversed flow on 221 faces (26.4% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (77.1% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   165  5.4051e-01  3.5389e-05  1.6686e-05  3.0054e-05  2.6934e-06  0:00:25   35
+
+ Reversed flow on 221 faces (26.4% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (74.8% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   166  4.5880e-01  4.6557e-05  1.4678e-05  5.1404e-05  6.4630e-06  0:00:26   34
+
+ Reversed flow on 220 faces (26.3% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (74.8% area) of pressure-outlet 8.
+   167  4.6823e-01  6.2847e-05  9.4959e-06  8.2610e-05  1.9322e-05  0:00:23   33
+
+ Reversed flow on 219 faces (26.1% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (72.3% area) of pressure-outlet 8.
+   168  5.9427e-01  7.0510e-05  1.4312e-05  1.8513e-04  5.6596e-05  0:00:21   32
+
+ Reversed flow on 227 faces (27.0% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (78.8% area) of pressure-outlet 8.
+   169  7.9361e-01  1.2580e-04  6.4277e-05  1.8129e-04  7.4694e-05  0:00:19   31
+
+ Reversed flow on 223 faces (26.6% area) of pressure-inlet 7.
+
+ Reversed flow on 24 faces (82.1% area) of pressure-outlet 8.
+   170  8.0799e-01  1.2773e-04  6.3194e-05  1.3381e-04  7.8861e-05  0:00:17   30
+
+ Reversed flow on 234 faces (27.8% area) of pressure-inlet 7.
+
+ Reversed flow on 26 faces (82.1% area) of pressure-outlet 8.
+   171  1.0613e+00  1.0552e-04  6.1157e-05  1.7491e-04  1.4981e-04  0:00:19   29
+
+ Reversed flow on 253 faces (29.8% area) of pressure-inlet 7.
+
+ Reversed flow on 26 faces (69.5% area) of pressure-outlet 8.
+   172  3.0655e+00  1.5142e-04  1.0141e-04  2.7823e-04  2.5233e-04  0:00:18   28
+
+ Reversed flow on 263 faces (30.9% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (63.9% area) of pressure-outlet 8.
+
+ Reversed flow on 4 faces (17.2% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   173  1.9460e+00  1.2667e-04  8.7687e-05  1.4585e-04  1.1222e-04  0:00:20   27
+
+ Reversed flow on 259 faces (30.5% area) of pressure-inlet 7.
+
+ Reversed flow on 23 faces (64.5% area) of pressure-outlet 8.
+
+ Reversed flow on 7 faces (31.2% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   174  1.9438e+00  8.5126e-05  6.6699e-05  9.6276e-05  6.3661e-05  0:00:21   26
+
+ Reversed flow on 270 faces (31.7% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (58.1% area) of pressure-outlet 8.
+
+ Reversed flow on 10 faces (45.8% area) of pressure-outlet 9.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   175  1.7831e+00  7.8432e-05  6.1110e-05  7.9131e-05  5.3081e-05  0:00:23   25
+
+ Reversed flow on 261 faces (30.7% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (60.9% area) of pressure-outlet 8.
+
+ Reversed flow on 11 faces (50.7% area) of pressure-outlet 9.
+   176  1.9282e+00  7.6056e-05  5.2475e-05  6.6972e-05  3.7036e-05  0:00:20   24
+
+ Reversed flow on 264 faces (31.0% area) of pressure-inlet 7.
+
+ Reversed flow on 13 faces (53.4% area) of pressure-outlet 8.
+
+ Reversed flow on 2 faces (9.8% area) of pressure-outlet 9.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   177  1.6444e+00  6.7680e-05  4.1581e-05  5.4657e-05  2.8394e-05  0:00:17   23
+
+ Reversed flow on 256 faces (30.2% area) of pressure-inlet 7.
+
+ Reversed flow on 11 faces (53.4% area) of pressure-outlet 8.
+   178  1.4328e+00  6.1261e-05  3.8252e-05  1.1462e-04  4.8438e-05  0:00:16   22
+
+ Reversed flow on 258 faces (30.4% area) of pressure-inlet 7.
+
+ Reversed flow on 10 faces (50.3% area) of pressure-outlet 8.
+
+ Reversed flow on 7 faces (16.9% area) of pressure-outlet 9.
+   179  2.2291e+01  2.1732e-04  5.6442e-04  7.6155e-05  4.9605e-05  0:00:13   21
+
+ Reversed flow on 253 faces (29.8% area) of pressure-inlet 7.
+
+ Reversed flow on 10 faces (47.8% area) of pressure-outlet 8.
+
+ Reversed flow on 6 faces (21.7% area) of pressure-outlet 9.
+   180  9.3310e+00  1.1670e-04  2.3216e-04  1.1298e-04  1.0655e-04  0:00:12   20
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 11 faces (50.8% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (33.2% area) of pressure-outlet 9.
+   181  4.3994e+00  1.0224e-04  1.2460e-04  1.5224e-04  1.4733e-04  0:00:10   19
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 13 faces (56.0% area) of pressure-outlet 8.
+
+ Reversed flow on 9 faces (39.9% area) of pressure-outlet 9.
+   182  2.5993e+00  8.4274e-05  8.2829e-05  9.6574e-05  9.7244e-05  0:00:09   18
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 14 faces (59.8% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (38.6% area) of pressure-outlet 9.
+   183  1.8711e+00  6.7979e-05  5.6348e-05  9.5970e-05  1.0163e-04  0:00:08   17
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (67.0% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (38.6% area) of pressure-outlet 9.
+   184  1.6151e+00  5.7480e-05  4.5444e-05  8.0468e-05  9.6400e-05  0:00:07   16
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (64.8% area) of pressure-outlet 8.
+
+ Reversed flow on 10 faces (46.5% area) of pressure-outlet 9.
+   185  1.3757e+00  6.2648e-05  3.9658e-05  8.4630e-05  1.0268e-04  0:00:07   15
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 15 faces (56.5% area) of pressure-outlet 8.
+
+ Reversed flow on 8 faces (36.0% area) of pressure-outlet 9.
+   186  1.3729e+00  6.4298e-05  3.7853e-05  6.7976e-05  6.5648e-05  0:00:06   14
+
+ Reversed flow on 243 faces (28.8% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (56.3% area) of pressure-outlet 8.
+
+ Reversed flow on 5 faces (21.8% area) of pressure-outlet 9.
+   187  1.4709e+00  5.8037e-05  3.4895e-05  1.0844e-04  1.0963e-04  0:00:06   13
+
+ Reversed flow on 241 faces (28.5% area) of pressure-inlet 7.
+
+ Reversed flow on 22 faces (68.0% area) of pressure-outlet 8.
+
+ Reversed flow on 1 face (4.1% area) of pressure-outlet 9.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   188  1.4936e+00  1.2221e-04  6.1064e-05  2.4850e-04  1.9577e-04  0:00:07   12
+
+ Reversed flow on 249 faces (29.4% area) of pressure-inlet 7.
+
+ Reversed flow on 21 faces (61.4% area) of pressure-outlet 8.
+   189  1.6250e+00  1.0986e-04  7.6744e-05  1.5015e-04  1.1370e-04  0:00:06   11
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (60.0% area) of pressure-outlet 8.
+   190  1.4923e+00  1.0131e-04  7.0133e-05  1.2385e-04  9.5555e-05  0:00:05   10
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (58.0% area) of pressure-outlet 8.
+   191  1.4086e+00  7.8341e-05  5.6483e-05  7.0646e-05  4.5109e-05  0:00:05    9
+
+ Reversed flow on 248 faces (29.3% area) of pressure-inlet 7.
+
+ Reversed flow on 16 faces (55.1% area) of pressure-outlet 8.
+   192  1.3658e+00  5.1248e-05  4.0438e-05  3.5597e-05  1.4202e-05  0:00:04    8
+
+ Reversed flow on 247 faces (29.2% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (62.7% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   193  1.3994e+00  4.4639e-05  3.3770e-05  2.6650e-05  1.0060e-05  0:00:04    7
+
+ Reversed flow on 246 faces (29.1% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (60.1% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   194  1.5243e+00  3.3893e-05  2.7493e-05  1.6396e-05  4.7808e-06  0:00:04    6
+
+ Reversed flow on 244 faces (28.9% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (66.5% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   195  1.4925e+00  2.7663e-05  2.2005e-05  1.1833e-05  2.1992e-06  0:00:04    5
+
+ Reversed flow on 241 faces (28.5% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (73.4% area) of pressure-outlet 8.
+        Stabilizing pressure coupled to enhance linear solver robustness.
+   196  1.3515e+00  2.4410e-05  1.8985e-05  8.4537e-06  1.1179e-06  0:00:03    4
+
+ Reversed flow on 238 faces (28.2% area) of pressure-inlet 7.
+
+ Reversed flow on 20 faces (79.4% area) of pressure-outlet 8.
+   197  1.2723e+00  2.1930e-05  1.9847e-05  7.5664e-06  7.4865e-07  0:00:02    3
+
+ Reversed flow on 234 faces (27.8% area) of pressure-inlet 7.
+
+ Reversed flow on 18 faces (70.7% area) of pressure-outlet 8.
+   198  1.0441e+00  2.1157e-05  1.6800e-05  8.1194e-06  6.7495e-07  0:00:01    2
+
+ Reversed flow on 230 faces (27.4% area) of pressure-inlet 7.
+
+ Reversed flow on 17 faces (69.1% area) of pressure-outlet 8.
+
+  iter  continuity  x-velocity  y-velocity           k     epsilon     time/iter
+   199  8.6672e-01  2.4938e-05  1.5207e-05  9.9402e-06  7.9291e-07  0:00:01    1
+
+ Reversed flow on 225 faces (26.8% area) of pressure-inlet 7.
+
+ Reversed flow on 19 faces (82.9% area) of pressure-outlet 8.
+   200  7.4843e-01  3.0037e-05  1.6039e-05  1.3298e-05  9.8264e-07  0:00:00    0
+Writing "| gzip -2cf > SolutionMonitor.gz"...
+Writing temporary file C:\\Users\\tbeau\\AppData\\Local\\Temp\\flntgz-3922 ...
+Done.
+
+Writing data to C:\\Users\\tbeau\\OneDrive\\Documents\\Universite\\MASTER1\\Turbulent Flows\\Project\\roundJetV1_files\\dp0\\FFF\\Fluent\\FFF.1.ip ...
+	x-coord
+	y-coord
+	pressure
+	x-velocity
+	y-velocity
+	k
+	epsilon
+	hyb_init-0
+	hyb_init-1
+Done.
+
+Error: WorkBench Error: Could not handle event: CALCULATION-COMPLETE
+Error Object: #f
+
+Performance Timer for 200 iterations on 1 compute node
+  Average wall-clock time per iteration:                0.603 sec
+  Global reductions per iteration:                        112 ops
+  Global reductions time per iteration:                 0.000 sec (0.0%)
+  Message count per iteration:                              9 messages
+  Data transfer per iteration:                          0.000 MB
+  LE solves per iteration:                                  4 solves
+  LE wall-clock time per iteration:                     0.373 sec (61.8%)
+  LE coupled wall-clock time per iteration:             0.287 sec (47.6%)
+  LE global solves per iteration:                           0 solves
+  LE global wall-clock time per iteration:              0.000 sec (0.0%)
+  LE global matrix maximum size:                            0
+  AMG cycles per iteration:                            10.185 cycles
+  AMG coupled cycles per iteration:                     5.930 cycles
+  Relaxation sweeps per iteration:                       4083 sweeps
+  Relaxation exchanges per iteration:                       0 exchanges
+  LE early protections (stall) per iteration:           0.335 times
+  LE early protections (divergence) per iteration:      0.070 times
+  Total SVARS touched:                                    382
+
+  Total wall-clock time:                              120.502 sec
+
+Transcript Stop Time:  13:40:38, 15 Nov 2025 Paris, Madrid 
+Total Transcript Time: 2 Minute 37 Second.

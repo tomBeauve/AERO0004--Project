@@ -1,0 +1,15 @@
+# encoding: utf-8
+# 2025 R2
+SetScriptVersion(Version="25.2.170")
+template1 = GetTemplate(TemplateName="Fluid Flow")
+system1 = template1.CreateSystem()
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+Save(Overwrite=True)
+designPoint1 = Parameters.GetDesignPoint(Name="0")
+parameter1 = Parameters.GetParameter(Name="P7")
+designPoint1.SetParameterExpression(
+    Parameter=parameter1,
+    Expression="2 [m]")
+Save(Overwrite=True)
+Open(FilePath=GetAbsoluteUserPathName("Universite/MASTER1/Turbulent Flows/Project/roundJetV1.wbpj"))
