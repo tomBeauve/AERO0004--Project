@@ -30,6 +30,7 @@ Idea : Domain / entrainment errors are more long range and physically problemati
 - U at centerline at x/D = 75
 - velocity field change < 0.5 % near outlet ( what quantity to look at specifically )
 
+## Result : the size to keep is 2.25 times the domain length
 ### Keep this domain for the following analyses
 
 # 3 Mesh convergence
