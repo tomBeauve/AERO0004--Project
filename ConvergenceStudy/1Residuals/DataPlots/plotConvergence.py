@@ -5,15 +5,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 from matplotlib.ticker import FuncFormatter
-#print(plt.colormaps())
+# print(plt.colormaps())
 
 
 # Graph parameters
 plt.rcParams.update({
     "text.usetex": True,              # Use LaTeX for all text rendering
-    "image.cmap" : "cividis",
+    "image.cmap": "cividis",
     "font.family": "serif",           # Use LaTeX's default font family
-    "font.serif": ["Times New Roman"],# Use Computer Modern for a LaTeX-like font
+    # Use Computer Modern for a LaTeX-like font
+    "font.serif": ["Times New Roman"],
     "font.size": 12,                  # Global font size to match LaTeX
     "axes.titlesize": 14,             # Font size for title
     "axes.labelsize": 14,             # Font size for axis labels
@@ -66,8 +67,8 @@ deltaTke = delta_rel(tkeMax)*100
 
 # plot Uz
 plt.figure()
-plt.plot(tols, Uz,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols, Uz)
+plt.plot(tols, Uz, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols, Uz)
 plt.xscale('log')
 plt.xlabel('Tolerance (-)')
 plt.ylabel(r'Uz $\mathrm{(m.s^{-1})}$')
@@ -75,27 +76,27 @@ plt.title('Uz')
 plt.tight_layout()
 ax = plt.gca()
 ax.invert_xaxis()
-ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-#ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
+ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+# ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
 plt.savefig("Uz_normal.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
 
 plt.figure()
-plt.plot(tols[1:], deltaUz, linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols[1:], deltaUz)
+plt.plot(tols[1:], deltaUz, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols[1:], deltaUz)
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('Tolerance (-)')
 plt.ylabel(r'$\mathrm{\Delta Uz}$ from 10*tol to tol (%)')
 plt.gca().invert_xaxis()
 plt.savefig("deltaUz.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
 
 
 # plot mass imbalance
 plt.figure()
-plt.plot(tols, massImbalance,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols, massImbalance)
+plt.plot(tols, massImbalance, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols, massImbalance)
 plt.xscale('log')
 plt.xlabel('Tolerance (-)')
 plt.ylabel('Mass imbalance (-)')
@@ -103,26 +104,46 @@ plt.title('Mass imbalance as fraction of inlet mass flow with tolerance')
 plt.tight_layout()
 ax = plt.gca()
 ax.invert_xaxis()
-ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-#ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
+ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+# ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
 plt.savefig("mass_imbalance.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
+
+# plot mass imbalance absolute value in log scale
+plt.figure()
+plt.plot(tols, np.abs(massImbalance), linestyle='-',
+         marker='o', lw=2, markersize=6)
+# plt.scatter(tols, massImbalance)
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel('Tolerance (-)')
+plt.ylabel('Mass imbalance (-)')
+plt.title(
+    'Mass imbalance absolute value as fraction of inlet mass flow with tolerance')
+plt.tight_layout()
+ax = plt.gca()
+ax.invert_xaxis()
+# ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+# ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
+plt.savefig("mass_imbalance_abs.pdf", bbox_inches='tight')
+# plt.show()
+
 
 plt.figure()
-plt.plot(tols[1:], deltaMass,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols[1:], deltaMass)
+plt.plot(tols[1:], deltaMass, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols[1:], deltaMass)
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('Tolerance (-)')
 plt.ylabel('relative change from 10*tol to tol (%)')
 plt.gca().invert_xaxis()
 plt.savefig("delta_mass.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
 
 # plot shear Uz
 plt.figure()
-plt.plot(tols, Uz_shearLayer,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols, Uz_shearLayer)
+plt.plot(tols, Uz_shearLayer, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols, Uz_shearLayer)
 plt.xscale('log')
 plt.xlabel('Tolerance (-)')
 plt.ylabel(r'Uz $\mathrm{(m.s^{-1})}$')
@@ -130,14 +151,14 @@ plt.title('Uz in shear layer')
 plt.tight_layout()
 ax = plt.gca()
 ax.invert_xaxis()
-ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-#ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
+ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+# ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
 plt.savefig("Uz_shear_layer.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
 
 plt.figure()
-plt.plot(tols[1:], deltaShearL,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols[1:], deltaShearL)
+plt.plot(tols[1:], deltaShearL, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols[1:], deltaShearL)
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('Tolerance (-)')
@@ -145,12 +166,12 @@ plt.ylabel('relative change from 10*tol to tol (%)')
 plt.title(r'$\mathrm{\Delta Uz}$ shear layer')
 plt.gca().invert_xaxis()
 plt.savefig("delta_shear_layer.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
 
 # plot max tke
 plt.figure()
-plt.plot(tols, tkeMax,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols, tkeMax)
+plt.plot(tols, tkeMax, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols, tkeMax)
 plt.xscale('log')
 plt.xlabel('Tolerance (-)')
 plt.ylabel(r'Maximum TKE $\mathrm{(m^2.s^{-2})}$')
@@ -158,14 +179,14 @@ plt.title('Maximum TKE')
 plt.tight_layout()
 ax = plt.gca()
 ax.invert_xaxis()
-ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-#ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
+ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+# ax.yaxis.set_major_formatter(FuncFormatter(lambda x, pos: f"{x:.3f}"))  # 3 decimals
 plt.savefig("deltaTke.pdf", bbox_inches='tight')
-#plt.show()
+# plt.show()
 
 plt.figure()
-plt.plot(tols[1:], deltaTke,linestyle='-',marker='o',lw = 2, markersize=6)
-#plt.scatter(tols[1:], deltaTke)
+plt.plot(tols[1:], deltaTke, linestyle='-', marker='o', lw=2, markersize=6)
+# plt.scatter(tols[1:], deltaTke)
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('Tolerance (-)')
