@@ -46,7 +46,7 @@ Idea : Domain / entrainment errors are more long range and physically problemati
 - computed on potential core length : distance at which U_CL =  0.99 U_inlet
 - and also computed on centerline velocity at x/D = 30 or 40  ( stay consistent with above qtties)
 
-### Keep the fine mesh for final analyses. And if fine is very costly, medium is ok for BC study.
+### Keep the fine mesh for xfinebis in the sqare1cell folder for further analyses. And if xfine is very costly, fine is ok for BC study.
 
 # 4 BC sensitivity
 ## What to vary : 

@@ -36,7 +36,7 @@ def delta_rel(qty):
 
 tols = [1e-3, 1e-4, 1e-5, 1e-6, 1e-7]
 
-paths_Uz = [f"clean/1e-{idx}Uz_zd75.csv" for idx in range(3, 8)]
+paths_Uz = [f"clean/1e-{idx}Uz_zd35.csv" for idx in range(3, 8)]
 Uz = np.zeros(len(paths_Uz))
 for i, path in enumerate(paths_Uz):
     data = np.loadtxt(path, delimiter=",", skiprows=1)

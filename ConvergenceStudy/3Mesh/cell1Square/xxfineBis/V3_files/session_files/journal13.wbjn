@@ -1,0 +1,29 @@
+# encoding: utf-8
+# 2025 R2
+SetScriptVersion(Version="25.2.170")
+system1 = GetSystem(Name="FFF")
+mesh1 = system1.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+Save(Overwrite=True)
+setupComponent1 = system1.GetComponent(Name="Setup")
+setupComponent1.Refresh()
+setupComponent1.Update(AllDependencies=True)
+setup1 = system1.GetContainer(ComponentName="Setup")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 0)(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 1)')
+setup1.SendCommand(Command="""/file/set-tui-version \"25.2\"
+Graphics driver currently in use: null""")
+solutionComponent1 = system1.GetComponent(Name="Solution")
+solutionComponent1.Refresh()
+solution1 = system1.GetContainer(ComponentName="Solution")
+solution1.Edit()
+setup1.SendCommand(Command='(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 0)(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 1)')
+solutionComponent1.Refresh()
+setup1.SendCommand(Command="""/file/set-tui-version \"25.2\"
+Graphics driver currently in use: dx11
+(cx-gui-do cx-set-list-tree-selections \"NavigationPane*Frame2*Table1*List_Tree2\" (list \"Solution|Run Calculation\"))""")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Run Calculation*Table1*Table6(Solution Advancement)*Table1*PushButton3(Calculate)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Information*OK")')
+mesh1.Exit()
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "MenuBar*FileMenu*Close Fluent")')
+Save(Overwrite=True)
+Open(FilePath=GetAbsoluteUserPathName("Universite/MASTER1/Turbulent Flows/Project/AERO0004--Project/ConvergenceStudy/3Mesh/xfine/V3.wbpj"))
