@@ -2,8 +2,8 @@ import re
 import numpy as np
 import pandas as pd
 import os  # Import os for directory creation
-case = "A"
-type = "UzProfiles"
+case = "C1"
+type = "UzCL"
 rawfile = f"raw/{type}_{case}.csv"
 print(rawfile)
 

@@ -22,12 +22,13 @@ def calculate_y_05(y_coords, uz_values, uz_CL):
     return y_coords[-1]  # if there is a problem, still returns something
 
 
-prefixes = ["A", "B1", "B2"]
+prefixes = ["A", "B1", "B2", "C1"]
 files = ["UzCL_cldompt1.csv", "UzProfiles_zd45.csv", "UzProfiles_zd25.csv"]
 tkeMax = {
     "A": 0.1029994,
     "B1": 0.1037837,
-    "B2": 0.1027692
+    "B2": 0.1027692,
+    "C1": 0.1029994
 }
 
 results = {}
@@ -96,7 +97,7 @@ for pre in prefixes:
 
 print("-----relative differences w.r.t case A-----")
 
-for case in ["B1", "B2"]:
+for case in prefixes[1:]:
     print(f"\ncase {case} vs A:")
 
     for key in results["A"]:

@@ -50,15 +50,20 @@ Idea : Domain / entrainment errors are more long range and physically problemati
 
 # 4 BC sensitivity
 ## What to vary : 
-- Inlet turbulence (1 - 5%) and viscosity ratio
-- Lateral and outlet BC maybe
+- Inlet turbulence (1 - 5 - 10%) and viscosity ratio (1 - 10 - 100)
+- Lateral BC (1 - 5%) and viscosity ratio (1 - 10)
 ## Fixed parameters:
 - residuals fixed in phase 1
 - domain fixed in phase 2
 - medium or fine mesh fixed in phase 3
 ## Action
 - Compare the Potential Core Length. This is highly sensitive to inlet BCs.
-- match dns paper conditions if possible ( it is the case here) : k = 3/2 (U_avg * I)^2 ; epsilon or omega depend on turbulent length scale l ~0.07D for a pipe exit;  lateral BC aim at I~1% for ambiant turbulence
+- compare max tke, y_0.5 and Uz_CL at z/D = 25 and 45 to see if the far field quantities are affected
+- turbulent intensity at inlet should be ~5% and lateral ~1%
+
+- (match dns paper conditions if possible ( it is the case here) : k = 3/2 (U_avg * I)^2 ; epsilon or omega depend on turbulent length scale l ~0.07D for a pipe exit;  lateral BC aim at I~1% for ambiant turbulence)
+
+### keep the C1 case : 5% inlet and 1% lateral
 
 
 # Final results 
