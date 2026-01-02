@@ -78,6 +78,10 @@ ur2_CL = Ur_Ur_CL - Ur_CL**2
 uz2_CL = Uz_Uz_CL - Uz_CL**2
 uphi2_CL = Uphi_Uphi_CL - Uphi_CL**2
 
+Ur_Uz_CL = Ur_Uz[r == 0]
+
+ur_uz_CL = Ur_Uz_CL - Uz_CL * Ur_CL
+
 k_CL = 1/2 * (ur2_CL + uz2_CL + uphi2_CL)
 # plt.plot(CL, np.sqrt(k_CL)/UzCL)
 # plt.show()
@@ -86,16 +90,17 @@ k_CL = 1/2 * (ur2_CL + uz2_CL + uphi2_CL)
 ##### Put quantities of interest inside CSV files ####
 
 df_CL = pd.DataFrame({
-    "z_CL": z_CL,
-    "Uz": Uz_CL,
-    "uz_fluct2": uz2_CL,
-    "ur_fluct2": ur2_CL,
-    "uphi_fluct2": uphi2_CL,
-    "k": k_CL
+    "x-coordinate": z_CL,
+    "axial-velocity": Uz_CL,
+    "uu": uz2_CL,
+    "vv": ur2_CL,
+    "ww": uphi2_CL,
+    'uv': ur_uz_CL,
+    "turb-kinetic-energy": k_CL
 })
 
 df_profiles = pd.DataFrame({
-    "r_profile": r_profiles,
+    "y-coordinate": r_profiles,
     "Uz_zd25": Uz_zd25,
     "Ur_zd25": Ur_zd25,
     "Uz_zd35": Uz_zd35,
@@ -110,44 +115,3 @@ df_profiles = pd.DataFrame({
 
 df_CL.to_csv("DNS_processed_CL.csv", index=False)
 df_profiles.to_csv("DNS_processed_profiles.csv", index=False)
-
-
-##### look at turbulent intensity at the inlet ######
-
-# ----- Inlet quantities (z = 0, 0 <= r <= 0.5) -----
-
-mask_inlet = (z == 0) & (r <= 0.5)
-
-r_inlet = r[mask_inlet]
-
-Uz_inlet = Uz[mask_inlet]
-Ur_inlet = Ur[mask_inlet]
-Uphi_inlet = Uphi[mask_inlet]
-
-Uz_Uz_inlet = Uz_Uz[mask_inlet]
-Ur_Ur_inlet = Ur_Ur[mask_inlet]
-Uphi_Uphi_inlet = Uphi_Uphi[mask_inlet]
-
-ur2_inlet = Ur_Ur_inlet - Ur_inlet**2
-uz2_inlet = Uz_Uz_inlet - Uz_inlet**2
-uphi2_inlet = Uphi_Uphi_inlet - Uphi_inlet**2
-
-k_inlet = 0.5 * (ur2_inlet + uz2_inlet + uphi2_inlet)
-l = 0.07
-epsilon_inlet = k_inlet**(3/2) / l * 0.09**(3/4)
-omega_inlet = k_inlet**(1/2) / l * 0.09**(1/4)
-
-TI_inlet = np.sqrt(2.0 / 3.0 * k_inlet) / Uz_inlet
-
-plt.figure()
-plt.plot(r_inlet, k_inlet, label="k")
-plt.plot(r_inlet, epsilon_inlet, label="eps")
-plt.plot(r_inlet, omega_inlet, label="om")
-plt.legend()
-plt.xlabel("r")
-plt.ylabel("Turbulent intensity")
-plt.title("Inlet turbulent intensity (z = 0)")
-plt.grid(True)
-plt.show()
-
-print(TI_inlet)
