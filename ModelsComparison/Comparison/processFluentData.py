@@ -20,14 +20,14 @@ def process_jet_data(filename):
     df = pd.read_csv(filename, skipinitialspace=True)
 
     # 1. Stress Reconstruction (Boussinesq Hypothesis)
-    df['uu'] = 2 * df['viscosity-turb'] * df['daxial-velocity-dx'] - \
-        (2/3) * RHO * df['turb-kinetic-energy']
+    df['uu'] = -(2 * df['viscosity-turb'] * df['daxial-velocity-dx'] -
+                 (2/3) * RHO * df['turb-kinetic-energy']
+                 )
+    df['vv'] = -(2 * df['viscosity-turb'] * df['dradial-velocity-dy'] -
+                 (2/3) * RHO * df['turb-kinetic-energy'])
 
-    df['vv'] = 2 * df['viscosity-turb'] * df['dradial-velocity-dy'] - \
-        (2/3) * RHO * df['turb-kinetic-energy']
-
-    df['uv'] = df['viscosity-turb'] * \
-        (df['daxial-velocity-dy'] + df['dradial-velocity-dx'])
+    df['uv'] = -(df['viscosity-turb'] *
+                 (df['daxial-velocity-dy'] + df['dradial-velocity-dx']))
 
     # 2. Generate Centerline File (CL.csv)
     # Increased tolerance to 1e-8 for safety
@@ -68,7 +68,7 @@ def process_jet_data(filename):
     if profile_list:
         final_profiles = pd.concat(profile_list)
         output_cols = ['x-coordinate', 'y-coordinate',
-                       'axial-velocity', 'radial-velocity', 'uv']
+                       'axial-velocity', 'radial-velocity', 'uu', 'vv', 'uv']
         final_profiles[output_cols].to_csv(
             f'cleanData/profiles_{MODEL}.csv', index=False)
         print(

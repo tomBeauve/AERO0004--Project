@@ -44,6 +44,8 @@ def get_model_data(model_name):
             prof_arrays[f'Uz_zd{z_D}'] = station_df['axial-velocity'].values
             prof_arrays[f'Ur_zd{z_D}'] = station_df['radial-velocity'].values
             prof_arrays[f'uv_zd{z_D}'] = station_df['uv'].values
+            prof_arrays[f'uu_zd{z_D}'] = station_df['uu'].values
+            prof_arrays[f'vv_zd{z_D}'] = station_df['vv'].values
 
     return cl_arrays, prof_arrays
 
@@ -75,14 +77,44 @@ for z_D in STATIONS:
     PROF_results["dns"][f'r_zd{z_D}'] = df_dns_prof['y-coordinate'].values
     PROF_results["dns"][f'Uz_zd{z_D}'] = df_dns_prof[f'Uz_zd{z_D}'].values
     PROF_results["dns"][f'Ur_zd{z_D}'] = df_dns_prof[f'Ur_zd{z_D}'].values
+    PROF_results["dns"][f'uu_zd{z_D}'] = df_dns_prof[f'uu_zd{z_D}'].values
+    PROF_results["dns"][f'vv_zd{z_D}'] = df_dns_prof[f'vv_zd{z_D}'].values
+    PROF_results["dns"][f'uv_zd{z_D}'] = df_dns_prof[f'uv_zd{z_D}'].values
 
 
 MODELS = ["keps", "komSST", "dns"]
+LINESTYLES = {
+    "dns": "-",
+    "komSST": "--",
+    "keps": "-."
+}
 D = 1
+
+
+plt.rcParams.update({
+    "text.usetex": True,              # Use LaTeX for all text rendering
+    "image.cmap": "cividis",
+    "font.family": "serif",           # Use LaTeX's default font family
+    # Use Computer Modern for a LaTeX-like font
+    "font.serif": ["Times New Roman"],
+    "font.size": 12,                  # Global font size to match LaTeX
+    "axes.titlesize": 14,             # Font size for title
+    "axes.labelsize": 14,             # Font size for axis labels
+    "xtick.labelsize": 12,            # Font size for x-axis ticks
+    "ytick.labelsize": 12,            # Font size for y-axis ticks
+    "legend.fontsize": 12,             # Font size for legend
+    "axes.grid": True,
+    "grid.color": "0.9",
+    "grid.linewidth": 0.7,
+    "grid.alpha": 0.9
+})
+
+
 ########## Inverse CL velocity ###############
 plt.figure()
 for m in MODELS:
-    plt.plot(CL_results[m]['x']/D, CL_results[m]['inv_Uz'], label=m)
+    plt.plot(CL_results[m]['x'], CL_results[m]['inv_Uz'],
+             linestyle=LINESTYLES[m], color="black", label=m)
 plt.xlabel('x/D')
 plt.ylabel('$U_{exit}/U_{CL}$')
 plt.title('Centerline Velocity Decay')
@@ -90,16 +122,110 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-
-########### velocity profile Uz at z/D = 25 #########
+########### velocity profile Uz #########
 plt.figure()
-for z_D in [25]:
+for z_D in STATIONS:
     for m in MODELS:
         plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
-                 PROF_results[m][f'Uz_zd{z_D}']/PROF_results[m][f'Uz_zd{z_D}'][0], label=m)
-plt.xlabel('r')
-plt.ylabel('Uz')
+                 PROF_results[m][f'Uz_zd{z_D}']/PROF_results[m][f'Uz_zd{z_D}'][0], label=f'{m}, z/D = {z_D}')
+plt.xlabel(r'$\eta$')
+plt.ylabel(r'$\bar{U_z}/\bar{U}_{z,c}$')
+plt.xlim((0, 0.35))
+plt.legend()
+plt.grid(True)
+plt.show()
 
+
+########### velocity profile Ur #########
+plt.figure()
+for z_D in STATIONS:
+    for m in MODELS:
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
+                 PROF_results[m][f'Ur_zd{z_D}']/PROF_results[m][f'Uz_zd{z_D}'][0], label=f'{m}, z/D = {z_D}')
+plt.xlabel(r'$\eta$')
+plt.ylabel(r'$\bar{U_r}/\bar{U}_{z,c}$')
+plt.xlim((0, 1))
+plt.legend()
+plt.grid(True)
+plt.show()
+
+########## CL velocity tilde ( Uzc * z ) = B_u D U_0 ###############
+plt.figure()
+for m in MODELS:
+    plt.plot(CL_results[m]['x'], CL_results[m]
+             ['Uz'] * CL_results[m]['x'], linestyle=LINESTYLES[m], color="black", label=m)
+plt.xlabel(r'$z/D$')
+plt.ylabel(r'$\tilde{\bar{U_z}}(\eta = 0)$')
+plt.title('vel CL decay constant')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+########## reynolds stress zz on CL ###############
+
+plt.figure()
+for m in MODELS:
+    plt.plot(CL_results[m]['x'], np.sqrt(CL_results[m]
+             ['uu'])/CL_results[m]['Uz'], linestyle=LINESTYLES[m], color="black", label=m)
+plt.xlabel(r'$z/D$')
+plt.ylabel(r"$\sqrt{\bar{u_z'^2}}/ \bar{U}_{z,c} $")
+plt.title('reynolds stress zz')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+########## reynolds stress rr on CL ###############
+
+plt.figure()
+for m in MODELS:
+    plt.plot(CL_results[m]['x'], np.sqrt(CL_results[m]
+             ['vv'])/CL_results[m]['Uz'], linestyle=LINESTYLES[m], color="black", label=m)
+plt.xlabel(r'$z/D$')
+plt.ylabel(r"$\sqrt{\bar{u_r'^2}}/ \bar{U}_{z,c} $")
+plt.title('reynolds stress rr')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+########## reynolds stress rr at zd locations ###############
+
+plt.figure()
+for z_D in STATIONS:
+    for m in MODELS:
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D, (PROF_results[m]
+                                                     [f'vv_zd{z_D}'])/PROF_results[m][f'Uz_zd{z_D}'][0]**2, label=m)
+plt.xlabel(r'$\eta$')
+plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
+plt.title('reynolds stress rr')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+########## reynolds stress zz at zd locations ###############
+
+plt.figure()
+for z_D in STATIONS:
+    for m in MODELS:
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D, (PROF_results[m]
+                                                     [f'uu_zd{z_D}'])/PROF_results[m][f'Uz_zd{z_D}'][0]**2, label=m)
+plt.xlabel(r'$\eta$')
+plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
+plt.title('reynolds stress zz')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+########## reynolds stress rz at zd locations ###############
+
+plt.figure()
+for z_D in STATIONS:
+    for m in MODELS:
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D, (PROF_results[m]
+                                                     [f'uv_zd{z_D}'])/PROF_results[m][f'Uz_zd{z_D}'][0]**2, label=m)
+plt.xlabel(r'$\eta$')
+plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
+plt.title('reynolds stress rz')
 plt.legend()
 plt.grid(True)
 plt.show()
