@@ -1,0 +1,26 @@
+# encoding: utf-8
+# 2025 R2
+SetScriptVersion(Version="25.2.170")
+system1 = GetSystem(Name="FFF")
+solution1 = system1.GetContainer(ComponentName="Solution")
+solution1.Edit()
+setup1 = system1.GetContainer(ComponentName="Setup")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 0)(cx-gui-do cx-activate-tab-index "NavigationPane*Frame1(TreeTab)" 1)')
+setup1.SendCommand(Command="""/file/set-tui-version \"25.2\"
+Graphics driver currently in use: dx11
+(cx-gui-do cx-set-list-tree-selections \"NavigationPane*Frame2*Table1*List_Tree2\" (list \"Results|Plots|XY Plot|uzprofile\"))""")
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*Frame2*Table1*List_Tree2" (list "Results|Plots|XY Plot|uzprofile"))(cx-gui-do cx-activate-item "NavigationPane*Frame2*Table1*List_Tree2")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*Frame2*Table1*List_Tree2" (list "Results|Plots|XY Plot|uzprofile"))')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution XY Plot*Table1*Table3*PushButton4(New Surface)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "MenuBar*PopupMenuNewSurface*Line/Rake...")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-text-entry \"Line/Rake Surface*Table1*TextEntry1(New Surface Name)\" \"zd25\")(cx-gui-do cx-set-real-entry-list \"Line/Rake Surface*Table1*Frame5(End Points)*Table1*RealEntry1(x0)\" '( 5))(cx-gui-do cx-set-real-entry-list \"Line/Rake Surface*Table1*Frame5(End Points)*Table1*RealEntry4(x1)\" '( 5))(cx-gui-do cx-set-real-entry-list \"Line/Rake Surface*Table1*Frame5(End Points)*Table1*RealEntry5(y1)\" '( 6.4))(cx-gui-do cx-activate-item \"Line/Rake Surface*PanelButtons*PushButton1(OK)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Line/Rake Surface*PanelButtons*PushButton2(Cancel)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-selections \"Solution XY Plot*Table1*Table3*Frame3*List1(Surfaces)\" '( 17 18 16))(cx-gui-do cx-activate-item \"Solution XY Plot*Table1*Table3*Frame3*List1(Surfaces)\")(cx-gui-do cx-set-toggle-button2 \"Solution XY Plot*Table1*Table1*ButtonBox1(Options)*CheckButton4(Write to File)\" #t)(cx-gui-do cx-activate-item \"Solution XY Plot*Table1*Table1*ButtonBox1(Options)*CheckButton4(Write to File)\")(cx-gui-do cx-activate-item \"Solution XY Plot*PanelButtons*PushButton1(OK)\")(cx-gui-do cx-set-file-dialog-entries \"Select File\" '( \"C:/Users/tbeau/Documents/Universite/MASTER1/Turbulent Flows/Project/AERO0004--Project/ConvergenceStudy/4BC/case_B1/data/UzProfiles_B1.csv\") \"All Files (*)\")(cx-gui-do cx-activate-item \"Question*OK\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution XY Plot*PanelButtons*PushButton2(Cancel)")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*Frame2*Table1*List_Tree2" (list "Results|Plots|XY Plot|uzprofile"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*Frame2*Table1*List_Tree2" (list "Results|Plots|XY Plot|uzprofile"))(cx-gui-do cx-activate-item "NavigationPane*Frame2*Table1*List_Tree2")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*Frame2*Table1*List_Tree2" (list "Results|Plots|XY Plot|uzprofile"))(cx-gui-do cx-activate-item "Solution XY Plot*PanelButtons*PushButton1(OK)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution XY Plot*PanelButtons*PushButton2(Cancel)")')
+setup1.SendCommand(Command="(cx-gui-do cx-activate-item \"MenuBar*FileMenu*Close Fluent\")(cx-gui-do cx-set-toggle-button2 \"Settings have changed!*Table1*ToggleBox2*Don't Save changes and exit\" #t)(cx-gui-do cx-activate-item \"Settings have changed!*Table1*ToggleBox2*Don't Save changes and exit\")(cx-gui-do cx-set-toggle-button2 \"Settings have changed!*Table1*ToggleBox2*Use settings changes for current and future calculations\" #t)(cx-gui-do cx-activate-item \"Settings have changed!*Table1*ToggleBox2*Use settings changes for current and future calculations\")(cx-gui-do cx-activate-item \"Settings have changed!*PanelButtons*PushButton1(OK)\")")
+Save(Overwrite=True)
+Open(FilePath=GetAbsoluteUserPathName("Universite/MASTER1/Turbulent Flows/Project/AERO0004--Project/ConvergenceStudy/4BC/case_A/V3.wbpj"))

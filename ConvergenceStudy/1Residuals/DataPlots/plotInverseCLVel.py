@@ -22,7 +22,7 @@ def plot_normalized_CL_vel(x_array, v_array, label=None):
     plt.show()
 
 
-data = np.loadtxt("cleanNoLimiter/Uz_centerlinedomain.csv",
+data = np.loadtxt("clean/1e-7UzCL_cldomain.csv",
                   delimiter=",", skiprows=1)
 
 x = data[:, 0]
