@@ -16,3 +16,6 @@ setup1.SendCommand(Command="(cx-gui-do cx-set-list-selections \"Export*Table1*Ta
 setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Export*Table1*Table1*DropDownList2(File Type)")')
 setup1.SendCommand(Command="(cx-gui-do cx-activate-item \"Export*PanelButtons*PushButton1(OK)\")(cx-gui-do cx-set-file-dialog-entries \"Select File\" '( \"C:/Users/tbeau/Documents/Universite/MASTER1/Turbulent Flows/Project/AERO0004--Project/ModelsComparison/k_epsEWT/data/solutionData_keps.csv\") \"ASCII Files ()\")(cx-gui-do cx-activate-item \"Question*OK\")")
 setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Export*PanelButtons*PushButton2(Cancel)")')
+Save(Overwrite=True)
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "MenuBar*FileMenu*Close Fluent")')
+Save(Overwrite=True)
