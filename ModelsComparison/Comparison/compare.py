@@ -82,7 +82,7 @@ for z_D in STATIONS:
     PROF_results["dns"][f'uv_zd{z_D}'] = df_dns_prof[f'uv_zd{z_D}'].values
 
 
-MODELS = ["keps", "komSST", "dns"]
+MODELS.append("dns")
 LINESTYLES = {
     "dns": "-",
     "komSST": "--",

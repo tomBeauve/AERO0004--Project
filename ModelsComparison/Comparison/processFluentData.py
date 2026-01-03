@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 # Configuration
-MODEL = 'komSST'
+MODEL = 'kepsImproved'
 INPUT_FILE = f'rawData/solutionData_{MODEL}.csv'
 RHO = 1
 U_BULK = 1.0
