@@ -227,8 +227,8 @@ Solver Settings
       ------------------------------------------------
       Pressure                     Second Order          
       Momentum                     Second Order Upwind   
-      Turbulent Kinetic Energy     First Order Upwind    
-      Turbulent Dissipation Rate   First Order Upwind    
+      Turbulent Kinetic Energy     Second Order Upwind   
+      Turbulent Dissipation Rate   Second Order Upwind   
 
    Solution Limits
 

@@ -86,7 +86,7 @@ MODELS.append("dns")
 LINESTYLES = {
     "dns": "-",
     "komSST": "--",
-    "keps": "-."
+    "keps": "-.",
 }
 D = 1
 
@@ -109,12 +109,28 @@ plt.rcParams.update({
     "grid.alpha": 0.9
 })
 
+MODEL_CFG = {
+    'dns':    {'color': 'black',  'ls': '-',  'lw': 1.5, 'label': 'DNS'},
+    'keps':   {'color': '#1f77b4', 'ls': '--', 'lw': 1.5, 'label': r'$k$-$\epsilon$'},
+    'komSST': {'color': '#d62728', 'ls': '-.', 'lw': 1.5, 'label': r'$k$-$\omega$ SST'}
+}
+
+# Use alpha (transparency) to distinguish locations without adding more colors
+# 1.0 is the furthest station (most developed), lower is closer to inlet
+STATION_ALPHAS = {25: 0.3, 35: 0.45, 45: 0.6, 55: 0.8, 65: 1.0}
+
 
 ########## Inverse CL velocity ###############
 plt.figure()
 for m in MODELS:
-    plt.plot(CL_results[m]['x'], CL_results[m]['inv_Uz'],
-             linestyle=LINESTYLES[m], color="black", label=m)
+    plt.plot(
+        CL_results[m]['x'],
+        CL_results[m]['inv_Uz'],
+        color=MODEL_CFG[m]['color'],
+        linestyle=MODEL_CFG[m]['ls'],
+        linewidth=MODEL_CFG[m]['lw'],
+        label=MODEL_CFG[m]['label']
+    )
 plt.xlabel(r'$z/D$')
 plt.ylabel('$U_{exit}/U_{CL}$')
 plt.xlim((0, 75))
@@ -128,11 +144,20 @@ plt.show()
 plt.figure()
 for z_D in STATIONS:
     for m in MODELS:
-        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
-                 PROF_results[m][f'Uz_zd{z_D}']/PROF_results[m][f'Uz_zd{z_D}'][0], label=f'{m}, z/D = {z_D}')
+        current_label = MODEL_CFG[m]['label'] if z_D == STATIONS[-1] else ""
+
+        plt.plot(
+            PROF_results[m][f'r_zd{z_D}'] / z_D,
+            PROF_results[m][f'Uz_zd{z_D}'] / PROF_results[m][f'Uz_zd{z_D}'][0],
+            color=MODEL_CFG[m]['color'],
+            linestyle=MODEL_CFG[m]['ls'],
+            linewidth=MODEL_CFG[m]['lw'],
+            alpha=STATION_ALPHAS[z_D],
+            label=current_label
+        )
 plt.xlabel(r'$\eta$')
 plt.ylabel(r'$\bar{U_z}/\bar{U}_{z,c}$')
-plt.xlim((0, 0.35))
+plt.xlim((0, 0.4))
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -142,11 +167,22 @@ plt.show()
 plt.figure()
 for z_D in STATIONS:
     for m in MODELS:
-        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
-                 PROF_results[m][f'Ur_zd{z_D}']/PROF_results[m][f'Uz_zd{z_D}'][0], label=f'{m}, z/D = {z_D}')
+        current_label = MODEL_CFG[m]['label'] if z_D == STATIONS[-1] else ""
+
+        # Note: Ur is normalized by the centerline AXIAL velocity (Uz,c)
+        # to show its relative magnitude to the primary flow.
+        plt.plot(
+            PROF_results[m][f'r_zd{z_D}'] / z_D,
+            PROF_results[m][f'Ur_zd{z_D}'] / PROF_results[m][f'Uz_zd{z_D}'][0],
+            color=MODEL_CFG[m]['color'],
+            linestyle=MODEL_CFG[m]['ls'],
+            linewidth=MODEL_CFG[m]['lw'],
+            alpha=STATION_ALPHAS[z_D],
+            label=current_label
+        )
 plt.xlabel(r'$\eta$')
 plt.ylabel(r'$\bar{U_r}/\bar{U}_{z,c}$')
-plt.xlim((0, 1))
+plt.xlim((0, 0.4))
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -154,8 +190,14 @@ plt.show()
 ########## CL velocity tilde ( Uzc * z ) = B_u D U_0 ###############
 plt.figure()
 for m in MODELS:
-    plt.plot(CL_results[m]['x'], CL_results[m]
-             ['Uz'] * CL_results[m]['x'], linestyle=LINESTYLES[m], color="black", label=m)
+    plt.plot(
+        CL_results[m]['x'],
+        CL_results[m]['Uz'] * (CL_results[m]['x']),
+        color=MODEL_CFG[m]['color'],
+        linestyle=MODEL_CFG[m]['ls'],
+        linewidth=MODEL_CFG[m]['lw'],
+        label=MODEL_CFG[m]['label']
+    )
 plt.xlabel(r'$z/D$')
 plt.ylabel(r'$\tilde{\bar{U_z}}(\eta = 0)$')
 plt.xlim((0, 75))
@@ -170,8 +212,15 @@ plt.show()
 
 plt.figure()
 for m in MODELS:
-    plt.plot(CL_results[m]['x'], np.sqrt(CL_results[m]
-             ['uu'])/CL_results[m]['Uz'], linestyle=LINESTYLES[m], color="black", label=m)
+    plt.plot(
+        CL_results[m]['x'],
+        np.sqrt(CL_results[m]['uu'])/CL_results[m]['Uz'],
+        color=MODEL_CFG[m]['color'],
+        linestyle=MODEL_CFG[m]['ls'],
+        linewidth=MODEL_CFG[m]['lw'],
+        label=MODEL_CFG[m]['label']
+    )
+
 plt.xlabel(r'$z/D$')
 plt.ylabel(r"$\sqrt{\bar{u_z'^2}}/ \bar{U}_{z,c} $")
 plt.xlim((0, 75))
@@ -185,8 +234,14 @@ plt.show()
 
 plt.figure()
 for m in MODELS:
-    plt.plot(CL_results[m]['x'], np.sqrt(CL_results[m]
-             ['vv'])/CL_results[m]['Uz'], linestyle=LINESTYLES[m], color="black", label=m)
+    plt.plot(
+        CL_results[m]['x'],
+        np.sqrt(CL_results[m]['vv'])/CL_results[m]['Uz'],
+        color=MODEL_CFG[m]['color'],
+        linestyle=MODEL_CFG[m]['ls'],
+        linewidth=MODEL_CFG[m]['lw'],
+        label=MODEL_CFG[m]['label']
+    )
 plt.xlabel(r'$z/D$')
 plt.ylabel(r"$\sqrt{\bar{u_r'^2}}/ \bar{U}_{z,c} $")
 plt.xlim((0, 75))
@@ -201,10 +256,19 @@ plt.show()
 plt.figure()
 for z_D in STATIONS:
     for m in MODELS:
-        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D, (PROF_results[m]
-                                                     [f'vv_zd{z_D}'])/PROF_results[m][f'Uz_zd{z_D}'][0]**2, label=m)
+        plt.plot(
+            PROF_results[m][f'r_zd{z_D}']/z_D,
+            PROF_results[m][f'vv_zd{z_D}'] /
+            PROF_results[m][f'Uz_zd{z_D}'][0]**2,
+            color=MODEL_CFG[m]['color'],
+            linestyle=MODEL_CFG[m]['ls'],
+            linewidth=MODEL_CFG[m]['lw'],
+            alpha=STATION_ALPHAS[z_D],
+            label=current_label
+        )
 plt.xlabel(r'$\eta$')
 plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
+plt.xlim((0, 0.4))
 plt.title('reynolds stress rr')
 plt.legend()
 plt.grid(True)
@@ -215,10 +279,19 @@ plt.show()
 plt.figure()
 for z_D in STATIONS:
     for m in MODELS:
-        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D, (PROF_results[m]
-                                                     [f'uu_zd{z_D}'])/PROF_results[m][f'Uz_zd{z_D}'][0]**2, label=m)
+        plt.plot(
+            PROF_results[m][f'r_zd{z_D}']/z_D,
+            (PROF_results[m][f'uu_zd{z_D}']) /
+            PROF_results[m][f'Uz_zd{z_D}'][0]**2,
+            color=MODEL_CFG[m]['color'],
+            linestyle=MODEL_CFG[m]['ls'],
+            linewidth=MODEL_CFG[m]['lw'],
+            alpha=STATION_ALPHAS[z_D],
+            label=current_label
+        )
 plt.xlabel(r'$\eta$')
 plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
+plt.xlim((0, 0.4))
 plt.title('reynolds stress zz')
 plt.legend()
 plt.grid(True)
@@ -229,10 +302,19 @@ plt.show()
 plt.figure()
 for z_D in STATIONS:
     for m in MODELS:
-        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D, (PROF_results[m]
-                                                     [f'uv_zd{z_D}'])/PROF_results[m][f'Uz_zd{z_D}'][0]**2, label=m)
+        plt.plot(
+            PROF_results[m][f'r_zd{z_D}']/z_D,
+            (PROF_results[m][f'uv_zd{z_D}']) /
+            PROF_results[m][f'Uz_zd{z_D}'][0]**2,
+            color=MODEL_CFG[m]['color'],
+            linestyle=MODEL_CFG[m]['ls'],
+            linewidth=MODEL_CFG[m]['lw'],
+            alpha=STATION_ALPHAS[z_D],
+            label=current_label
+        )
 plt.xlabel(r'$\eta$')
 plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
+plt.xlim((0, 0.4))
 plt.title('reynolds stress rz')
 plt.legend()
 plt.grid(True)
@@ -242,8 +324,14 @@ plt.show()
 ########## Decay constant Bu ###############
 plt.figure()
 for m in MODELS:
-    plt.plot(CL_results[m]['x'], CL_results[m]['Uz'] / CL_results[m]['Uz'][0] * CL_results[m]['x'],
-             linestyle=LINESTYLES[m], color="black", label=m)
+    plt.plot(
+        CL_results[m]['x'],
+        CL_results[m]['Uz'] / CL_results[m]['Uz'][0] * (CL_results[m]['x']),
+        color=MODEL_CFG[m]['color'],
+        linestyle=MODEL_CFG[m]['ls'],
+        linewidth=MODEL_CFG[m]['lw'],
+        label=MODEL_CFG[m]['label']
+    )
 plt.xlabel(r'$z/D$')
 plt.ylabel('$U_{exit}/U_{CL}$')
 plt.xlim((0, 75))
