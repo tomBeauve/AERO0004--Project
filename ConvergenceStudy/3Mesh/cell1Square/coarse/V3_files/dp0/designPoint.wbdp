@@ -35,7 +35,7 @@
       <storage-scheme-id valType="String">version-1-format</storage-scheme-id>
       <deleted-sources valType="String">[]</deleted-sources>
       <last-updated valType="Int64">8618</last-updated>
-      <last-modified-by-usage valType="String">{"Extrinsic": 9243, "Input": 8608, "Output": 8038}</last-modified-by-usage>
+      <last-modified-by-usage valType="String">{"Extrinsic": 9285, "Input": 8608, "Output": 8038}</last-modified-by-usage>
       <outputs-generated-by-type valType="String">{}</outputs-generated-by-type>
       <last-update-regen-times valType="String">{"Preferences": 0, "ToolbarExp": 0, "FileTypesContainer": 0, "FileContainer": 0, "Messages": 0, "Parameters": 0, "Schematic": 0, "ReportDataContainer": 0, "Graphics": 0, "Units": 0, "HpsContainer": 0, "PyAddinManager": 0, "Scopes": 0, "Geometry": 8615, "Mesh": 8453, "Setup": 8572, "Solution": 8521, "Results": 0}</last-update-regen-times>
       <unique-system-dir valType="String">FFF</unique-system-dir>
@@ -179,7 +179,7 @@
       <storage-scheme-id valType="String">version-1-format</storage-scheme-id>
       <deleted-sources valType="String">[]</deleted-sources>
       <last-updated valType="Int64">9185</last-updated>
-      <last-modified-by-usage valType="String">{"Extrinsic": 9184, "Input": 9180, "Output": 9180}</last-modified-by-usage>
+      <last-modified-by-usage valType="String">{"Extrinsic": 9266, "Input": 9180, "Output": 9180}</last-modified-by-usage>
       <outputs-generated-by-type valType="String">{}</outputs-generated-by-type>
       <last-update-regen-times valType="String">{"Preferences": 0, "ToolbarExp": 0, "FileTypesContainer": 0, "FileContainer": 0, "Messages": 0, "Parameters": 0, "Schematic": 0, "ReportDataContainer": 0, "Graphics": 0, "Units": 0, "HpsContainer": 0, "PyAddinManager": 0, "Scopes": 0, "Geometry": 8618, "Mesh": 9166, "Setup": 9010, "Solution": 8973, "Results": 0}</last-update-regen-times>
       <unique-system-dir valType="String">FFF</unique-system-dir>
@@ -303,7 +303,7 @@
       <storage-scheme-id valType="String">version-1-format</storage-scheme-id>
       <deleted-sources valType="String">[]</deleted-sources>
       <last-updated valType="Int64">9227</last-updated>
-      <last-modified-by-usage valType="String">{"Extrinsic": 9241, "Input": 8966, "Output": 9222}</last-modified-by-usage>
+      <last-modified-by-usage valType="String">{"Extrinsic": 9270, "Input": 8966, "Output": 9222}</last-modified-by-usage>
       <outputs-generated-by-type valType="String">{}</outputs-generated-by-type>
       <last-update-regen-times valType="String">{"Preferences": 0, "ToolbarExp": 0, "FileTypesContainer": 0, "FileContainer": 0, "Messages": 0, "Parameters": 0, "Schematic": 0, "ReportDataContainer": 0, "Graphics": 0, "Units": 0, "HpsContainer": 0, "PyAddinManager": 0, "Scopes": 0, "Geometry": 8618, "Mesh": 9185, "Setup": 9208, "Solution": 8973, "Results": 0}</last-update-regen-times>
       <unique-system-dir valType="String">FFF</unique-system-dir>
@@ -349,15 +349,16 @@
       <container-type valType="String">Ansys.CFX.CFDPost.CFDPostAddin:CFDAnalysisContainer</container-type>
       <storage-scheme-id valType="String">version-1-format</storage-scheme-id>
       <deleted-sources valType="String">[]</deleted-sources>
-      <last-updated valType="Int64">0</last-updated>
-      <last-modified-by-usage valType="String">{"Extrinsic": 6906, "Input": 6900, "Output": 6899}</last-modified-by-usage>
+      <last-updated valType="Int64">9282</last-updated>
+      <last-modified-by-usage valType="String">{"Extrinsic": 9273, "Input": 9281, "Output": 6899}</last-modified-by-usage>
       <outputs-generated-by-type valType="String">{}</outputs-generated-by-type>
+      <last-update-regen-times valType="String">{"Preferences": 0, "ToolbarExp": 0, "FileTypesContainer": 0, "FileContainer": 0, "Messages": 0, "Parameters": 0, "Schematic": 0, "ReportDataContainer": 0, "Graphics": 0, "Units": 0, "HpsContainer": 0, "PyAddinManager": 0, "Scopes": 0, "Geometry": 8618, "Mesh": 9185, "Setup": 9235, "Solution": 9227, "Results": 0}</last-update-regen-times>
       <unique-system-dir valType="String">FFF</unique-system-dir>
-      <contains-significant-data valType="Boolean">false</contains-significant-data>
+      <contains-significant-data valType="Boolean">true</contains-significant-data>
       <Object Name="/Results/CFDResults:Results Source" Version="1.0">
         <class-type valType="String">CFDResults</class-type>
         <object-name valType="String">Results Source</object-name>
-        <member-data valType="String">{"DisplayText": "Results Source", "DataLinks": {"$$83d81fd7-3487-4491-a83a-beba8e6314a7": $$d76762c9-3875-45fe-8cdd-f43b5da53007}, "UpstreamContainersRemovedSinceRefresh": False, "State": "UpToDate", "ForceRefresh": False, "ExternalFileMap": {}, "InitCCL": None, "UseInitCCL": False, "PostStateFile": None, "_reportFiles": None, "_htmReportFile": None, "_xmlReportFile": None, "MRESLoadOptionsMsg": "See Solution component properties for multi-configuration options (CFX only).", "ClearState": False, "LoadReport": "None", "CustomReportTemplate": "", "RunSessionScript": False, "UpdateScriptCCL": "", "StateInitializationFile": "", "GenerateReport": False, "ReportName": "Report", "ReportLocationDirectory": "", "LastResultsID": 2}</member-data>
+        <member-data valType="String">{"DisplayText": "Results Source", "DataLinks": {"$$83d81fd7-3487-4491-a83a-beba8e6314a7": $$d76762c9-3875-45fe-8cdd-f43b5da53007}, "UpstreamContainersRemovedSinceRefresh": False, "State": "UpToDate", "ForceRefresh": False, "ExternalFileMap": {}, "InitCCL": None, "UseInitCCL": False, "PostStateFile": $$569bc7a0-1038-4079-a3b5-a65eaea9d585, "_reportFiles": None, "_htmReportFile": None, "_xmlReportFile": None, "MRESLoadOptionsMsg": "See Solution component properties for multi-configuration options (CFX only).", "ClearState": False, "LoadReport": "None", "CustomReportTemplate": "", "RunSessionScript": False, "UpdateScriptCCL": "", "StateInitializationFile": "", "GenerateReport": False, "ReportName": "Report", "ReportLocationDirectory": "", "LastResultsID": 2}</member-data>
         <custom-data>
           <DataSource1 valType="String">Solution</DataSource1>
           <EntityType1 valType="String">FluentSolution</EntityType1>
@@ -372,7 +373,7 @@
       <Object Name="/Results/SolutionDataLink:SolutionDataProvider" Version="1.0">
         <class-type valType="String">SolutionDataLink</class-type>
         <object-name valType="String">SolutionDataProvider</object-name>
-        <member-data valType="String">{"DisplayText": "SolutionDataProvider", "Entity": $$83d81fd7-3487-4491-a83a-beba8e6314a7, "DataType": "FluentSolution", "ConnectionKey": "f3588349-db9f-45e7-a9eb-6c2f46d8b11c", "RefreshTimestamp": 0, "ID": 1, "SecondID": 2, "DataEntityType": "FluentSolution", "SystemName": "", "LastFilename": {}}</member-data>
+        <member-data valType="String">{"DisplayText": "SolutionDataProvider", "Entity": $$83d81fd7-3487-4491-a83a-beba8e6314a7, "DataType": "FluentSolution", "ConnectionKey": "f3588349-db9f-45e7-a9eb-6c2f46d8b11c", "RefreshTimestamp": 9227, "ID": 1, "SecondID": 2, "DataEntityType": "FluentSolution", "SystemName": "FFF", "LastFilename": {"FluentSolution": r"C:\Users\tbeau\Documents\Universite\MASTER1\Turbulent Flows\Project\AERO0004--Project\ConvergenceStudy\3Mesh\cell1Square\coarse\V3_files\dp0\FFF\Fluent\FFF.1-4-00891.dat.h5"}}</member-data>
       </Object>
     </Container>
   </Containers>

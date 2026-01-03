@@ -83,11 +83,6 @@ for z_D in STATIONS:
 
 
 MODELS.append("dns")
-LINESTYLES = {
-    "dns": "-",
-    "komSST": "--",
-    "keps": "-.",
-}
 D = 1
 
 

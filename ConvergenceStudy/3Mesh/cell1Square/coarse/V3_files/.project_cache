@@ -8,6 +8,7 @@ dp0/FFF/Fluent/fluent-0-error.log
 dp0/FFF/Fluent/fluent-999999-error.log
 dp0/FFF/Fluent/SolutionMonitor.gz
 dp0/FFF/MECH/FFF.1.msh
+dp0/FFF/Post/Fluid Flow Fluent.cst
 dp0/global/MECH/FFF.mshdb
 dp0/act.dat
 dp0/designPoint.wbdp
@@ -25,6 +26,7 @@ session_files/journal10.wbjn
 session_files/journal11.wbjn
 session_files/journal12.wbjn
 session_files/journal13.wbjn
+session_files/journal14.wbjn
 session_files/journal2.wbjn
 session_files/journal3.wbjn
 session_files/journal4.wbjn
@@ -42,6 +44,7 @@ dp0/global/
 dp0/FFF/DM/
 dp0/FFF/Fluent/
 dp0/FFF/MECH/
+dp0/FFF/Post/
 dp0/global/MECH/
 dp0/global/MECH/FFF/
 dpall/global/
