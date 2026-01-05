@@ -149,11 +149,12 @@ def finalize_plot(filename, show_grid=True):
     ax.yaxis.label.set_verticalalignment('center')
 
     ax.yaxis.labelpad = 10
-
-    if show_grid == "horizontal":
+    if show_grid == False:
+        pass
+    elif show_grid == "horizontal":
         ax.grid(True, which='major', axis='y', linestyle='--', alpha=0.8)
     elif show_grid:
-        ax.grid(True, which='major', axis='both', linestyle='--', alpha=0.8)
+        ax.grid(True, which='major', axis='both', linestyle='--', alpha=1)
 
     plt.tight_layout()
     plt.savefig(output_dir / f"{filename}.svg", bbox_inches='tight', dpi=300)
@@ -202,12 +203,11 @@ for z_D in STATIONS:
                  PROF_results[m][f'Uz_zd{z_D}'] /
                  PROF_results[m][f'Uz_zd{z_D}'][0],
                  **plot_settings, alpha=STATION_ALPHAS[z_D])
-plt.xlabel(r'$\eta$')
+plt.xlabel(r'$\eta = r/z$', loc=('center'))
 plt.ylabel(r'$\frac{\bar{U}_z}{\bar{U}_{z,c}}$', fontsize=32)
 plt.xlim((0, 0.4))
 plt.ylim((0, None))
 plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
-plt.legend()
 finalize_plot("profile_Uz_similarity", show_grid=False)
 
 
@@ -226,7 +226,6 @@ plt.xticks([0, 20, 40, 60])
 plt.yticks([0.05, 0.13,  0.235, 0.3], ["0.05", "0.13", "0.24", "0.3"])
 
 
-plt.legend()
 finalize_plot("cl_reynolds_stress_zz", show_grid="horizontal")
 
 
@@ -261,3 +260,108 @@ plt.ylim((-0.0001, None))
 plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
 plt.yticks([0, 0.019, 0.025], ["0", "0.019", "0.025"])
 finalize_plot("profile_reynolds_rz", show_grid="horizontal")
+
+
+# spreading rate
+
+z_fit = np.linspace(min(STATIONS) - 10, max(STATIONS) + 10, 200)
+
+for m in MODELS:
+    r_half_list = []
+    z_list = []
+
+    for z_D in STATIONS:
+        r = PROF_results[m][f'r_zd{z_D}']
+        Uz = PROF_results[m][f'Uz_zd{z_D}']
+        Uz_center = Uz[0]
+
+        f_interp = interp1d(Uz / Uz_center, r, kind='linear')
+        try:
+            r_half = f_interp(0.5)
+            r_half_list.append(r_half)
+            z_list.append(z_D)
+        except ValueError:
+            continue
+
+    z_list = np.array(z_list)
+    r_half_list = np.array(r_half_list)
+
+    # Scatter: stations
+
+    # Linear fit
+    S, C = np.polyfit(z_list, r_half_list, 1)
+    plt.plot(
+        z_fit,
+        S * z_fit + C,
+        **MODEL_CFG[m]
+    )
+    if m == 'keps':
+        yloc = -0.5
+    else:
+        yloc = 0
+    plt.text(z_fit[-1] + 1, S * z_fit[-1] + C + yloc, MODEL_CFG[m]['label'],
+             color=MODEL_CFG[m]['color'],
+             va='center', fontweight='bold', fontsize=22)
+
+plt.xlabel(r'$z/D$')
+plt.ylabel(r'$r_{1/2}/D$')
+plt.xlim((15, 75))
+plt.xticks([20, 40, 60])
+finalize_plot("jet_spreading_rate", show_grid=False)
+
+
+models_plot = ['dns', 'keps', 'komSST']
+labels = ['DNS', r'$k$-$\epsilon$', r'$k$-$\omega$ SST']
+
+uz2_vals = [0.0550, 0.0830, 0.0890]
+ur2_vals = [0.0385, 0.0698, 0.0744]
+
+
+x = np.arange(len(models_plot))
+width = 0.32
+
+
+color_uz = "#ac2121"   # dark gray
+color_ur = "#19669d"   # light gray
+
+plt.figure(figsize=(8, 6))
+plt.bar(
+    x - width/2,
+    uz2_vals,
+    width,
+    color=color_uz
+)
+
+plt.bar(
+    x + width/2,
+    ur2_vals,
+    width,
+    color=color_ur
+)
+
+plt.xticks(x, labels, fontsize=25)
+
+
+plt.annotate(
+    r'$\frac{\overline{u_z^{\prime 2}}}{\bar U_{z,c}^2}$',
+    xy=(-0.15, 0.60),
+    xycoords='axes fraction',
+    rotation=0,
+    ha='center',
+    va='center',
+    color=color_uz,
+    fontsize=30
+)
+
+plt.annotate(
+    r'$\frac{\overline{u_r^{\prime 2}}}{\bar U_{z,c}^2}$',
+    xy=(-0.15, 0.30),
+    xycoords='axes fraction',
+    rotation=0,
+    ha='center',
+    va='center',
+    color=color_ur,
+    fontsize=30
+)
+plt.yticks([0, 0.04, 0.08])
+finalize_plot("bar_reynolds_centerline", show_grid=False)

@@ -319,3 +319,50 @@ print("\n--- Jet Spreading Analysis ---")
 for m in MODELS:
     S, z0_s = compute_spreading_rate(m, STATIONS, PROF_results)
     print(f"Model {m}: Spreading Rate (S) = {S:.4f}, z0/D = {z0_s:.3f}")
+
+
+z_fit = np.linspace(min(STATIONS) - 10, max(STATIONS) + 10, 200)
+
+for m in MODELS:
+    r_half_list = []
+    z_list = []
+
+    for z_D in STATIONS:
+        r = PROF_results[m][f'r_zd{z_D}']
+        Uz = PROF_results[m][f'Uz_zd{z_D}']
+        Uz_center = Uz[0]
+
+        f_interp = interp1d(Uz / Uz_center, r, kind='linear')
+        try:
+            r_half = f_interp(0.5)
+            r_half_list.append(r_half)
+            z_list.append(z_D)
+        except ValueError:
+            continue
+
+    z_list = np.array(z_list)
+    r_half_list = np.array(r_half_list)
+
+    # Scatter: stations
+    plt.scatter(
+        z_list,
+        r_half_list,
+        color=MODEL_CFG[m]['color'],
+        s=40,
+        zorder=3
+    )
+
+    # Linear fit
+    S, C = np.polyfit(z_list, r_half_list, 1)
+    plt.plot(
+        z_fit,
+        S * z_fit + C,
+        **MODEL_CFG[m]
+    )
+
+plt.xlabel(r'$z/D$')
+plt.ylabel(r'$r_{1/2}/D$')
+plt.xlim((20, 75))
+plt.xticks([20, 40, 60])
+plt.legend()
+finalize_plot("jet_spreading_rate")
