@@ -1,7 +1,8 @@
-import pandas as pd
-import pandas as pd
+from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
+import pandas as pd
 
 # --- Configuration ---
 D = 0.2
@@ -86,6 +87,11 @@ MODELS.append("dns")
 D = 1
 
 
+# Create directory for figures if it doesn't exist
+output_dir = Path("figures")
+output_dir.mkdir(exist_ok=True)
+
+# --- Configuration ---
 plt.rcParams.update({
     "text.usetex": True,              # Use LaTeX for all text rendering
     "image.cmap": "cividis",
@@ -93,11 +99,11 @@ plt.rcParams.update({
     # Use Computer Modern for a LaTeX-like font
     "font.serif": ["Times New Roman"],
     "font.size": 12,                  # Global font size to match LaTeX
-    "axes.titlesize": 14,             # Font size for title
-    "axes.labelsize": 14,             # Font size for axis labels
-    "xtick.labelsize": 12,            # Font size for x-axis ticks
-    "ytick.labelsize": 12,            # Font size for y-axis ticks
-    "legend.fontsize": 12,             # Font size for legend
+    "axes.titlesize": 18,             # Font size for title
+    "axes.labelsize": 18,             # Font size for axis labels
+    "xtick.labelsize": 16,            # Font size for x-axis ticks
+    "ytick.labelsize": 16,            # Font size for y-axis ticks
+    "legend.fontsize": 16,             # Font size for legend
     "axes.grid": True,
     "grid.color": "0.9",
     "grid.linewidth": 0.7,
@@ -110,228 +116,206 @@ MODEL_CFG = {
     'komSST': {'color': '#d62728', 'ls': '-.', 'lw': 1.5, 'label': r'$k$-$\omega$ SST'}
 }
 
-# Use alpha (transparency) to distinguish locations without adding more colors
-# 1.0 is the furthest station (most developed), lower is closer to inlet
 STATION_ALPHAS = {25: 0.3, 35: 0.45, 45: 0.6, 55: 0.8, 65: 1.0}
 
+# Helper to avoid repetitive code and save figures
 
-########## Inverse CL velocity ###############
-plt.figure()
+
+def finalize_plot(filename):
+    plt.tight_layout()
+    plt.savefig(output_dir / f"{filename}.pdf", bbox_inches='tight', dpi=300)
+    plt.show()
+
+
+# 1. Inverse CL velocity
+plt.figure(figsize=(8, 4))
 for m in MODELS:
-    plt.plot(
-        CL_results[m]['x'],
-        CL_results[m]['inv_Uz'],
-        color=MODEL_CFG[m]['color'],
-        linestyle=MODEL_CFG[m]['ls'],
-        linewidth=MODEL_CFG[m]['lw'],
-        label=MODEL_CFG[m]['label']
-    )
+    plt.plot(CL_results[m]['x'], CL_results[m]['inv_Uz'], **MODEL_CFG[m])
 plt.xlabel(r'$z/D$')
-plt.ylabel('$U_{exit}/U_{CL}$')
+plt.ylabel(r'$U_{exit}/U_{z,CL}$')
 plt.xlim((0, 75))
 plt.xticks([0, 20, 40, 60])
-plt.title('Centerline Velocity Decay')
 plt.legend()
-plt.grid(True)
-plt.show()
+finalize_plot("centerline_decay_inverse")
 
-########### velocity profile Uz #########
-plt.figure()
+# 2. Velocity profile Uz (Self-similar)
+plt.figure(figsize=(8, 4))
 for z_D in STATIONS:
     for m in MODELS:
-        current_label = MODEL_CFG[m]['label'] if z_D == STATIONS[-1] else ""
+        plot_settings = MODEL_CFG[m].copy()
 
-        plt.plot(
-            PROF_results[m][f'r_zd{z_D}'] / z_D,
-            PROF_results[m][f'Uz_zd{z_D}'] / PROF_results[m][f'Uz_zd{z_D}'][0],
-            color=MODEL_CFG[m]['color'],
-            linestyle=MODEL_CFG[m]['ls'],
-            linewidth=MODEL_CFG[m]['lw'],
-            alpha=STATION_ALPHAS[z_D],
-            label=current_label
-        )
+        # Only keep the label for the last station to avoid legend clutter
+        if z_D != STATIONS[-1]:
+            plot_settings['label'] = ""
+        plt.plot(PROF_results[m][f'r_zd{z_D}'] / z_D,
+                 PROF_results[m][f'Uz_zd{z_D}'] /
+                 PROF_results[m][f'Uz_zd{z_D}'][0],
+                 **plot_settings, alpha=STATION_ALPHAS[z_D])
 plt.xlabel(r'$\eta$')
-plt.ylabel(r'$\bar{U_z}/\bar{U}_{z,c}$')
+plt.ylabel(r'$\bar{U}_z/\bar{U}_{z,c}$')
 plt.xlim((0, 0.4))
+plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
 plt.legend()
-plt.grid(True)
-plt.show()
+finalize_plot("profile_Uz_similarity")
 
-
-########### velocity profile Ur #########
-plt.figure()
+# 3. Velocity profile Ur
+plt.figure(figsize=(8, 4))
 for z_D in STATIONS:
     for m in MODELS:
-        current_label = MODEL_CFG[m]['label'] if z_D == STATIONS[-1] else ""
+        plot_settings = MODEL_CFG[m].copy()
 
-        # Note: Ur is normalized by the centerline AXIAL velocity (Uz,c)
-        # to show its relative magnitude to the primary flow.
-        plt.plot(
-            PROF_results[m][f'r_zd{z_D}'] / z_D,
-            PROF_results[m][f'Ur_zd{z_D}'] / PROF_results[m][f'Uz_zd{z_D}'][0],
-            color=MODEL_CFG[m]['color'],
-            linestyle=MODEL_CFG[m]['ls'],
-            linewidth=MODEL_CFG[m]['lw'],
-            alpha=STATION_ALPHAS[z_D],
-            label=current_label
-        )
+        # Only keep the label for the last station to avoid legend clutter
+        if z_D != STATIONS[-1]:
+            plot_settings['label'] = ""
+        plt.plot(PROF_results[m][f'r_zd{z_D}'] / z_D,
+                 PROF_results[m][f'Ur_zd{z_D}'] /
+                 PROF_results[m][f'Uz_zd{z_D}'][0],
+                 **plot_settings, alpha=STATION_ALPHAS[z_D])
 plt.xlabel(r'$\eta$')
-plt.ylabel(r'$\bar{U_r}/\bar{U}_{z,c}$')
+plt.ylabel(r'$\bar{U}_r/\bar{U}_{z,c}$')
 plt.xlim((0, 0.4))
-plt.legend()
-plt.grid(True)
-plt.show()
+plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
 
-########## CL velocity tilde ( Uzc * z ) = B_u D U_0 ###############
-plt.figure()
+plt.legend()
+finalize_plot("profile_Ur_similarity")
+
+# 4. Reynolds stress zz (Centerline)
+plt.figure(figsize=(8, 4))
 for m in MODELS:
-    plt.plot(
-        CL_results[m]['x'],
-        CL_results[m]['Uz'] * (CL_results[m]['x']),
-        color=MODEL_CFG[m]['color'],
-        linestyle=MODEL_CFG[m]['ls'],
-        linewidth=MODEL_CFG[m]['lw'],
-        label=MODEL_CFG[m]['label']
-    )
+    plt.plot(CL_results[m]['x'], np.sqrt(CL_results[m]
+             ['uu'])/CL_results[m]['Uz'], **MODEL_CFG[m])
 plt.xlabel(r'$z/D$')
-plt.ylabel(r'$\tilde{\bar{U_z}}(\eta = 0)$')
+plt.ylabel(r"$\sqrt{\overline{u_z'^2}}/ \bar{U}_{z,c}$")
 plt.xlim((0, 75))
 plt.xticks([0, 20, 40, 60])
-plt.title('vel CL decay constant')
 plt.legend()
-plt.grid(True)
-plt.show()
+finalize_plot("cl_reynolds_stress_zz")
 
-
-########## reynolds stress zz on CL ###############
-
-plt.figure()
+# 5. Reynolds stress rr (Centerline)
+plt.figure(figsize=(8, 4))
 for m in MODELS:
-    plt.plot(
-        CL_results[m]['x'],
-        np.sqrt(CL_results[m]['uu'])/CL_results[m]['Uz'],
-        color=MODEL_CFG[m]['color'],
-        linestyle=MODEL_CFG[m]['ls'],
-        linewidth=MODEL_CFG[m]['lw'],
-        label=MODEL_CFG[m]['label']
-    )
-
+    plt.plot(CL_results[m]['x'], np.sqrt(CL_results[m]
+             ['vv'])/CL_results[m]['Uz'], **MODEL_CFG[m])
 plt.xlabel(r'$z/D$')
-plt.ylabel(r"$\sqrt{\bar{u_z'^2}}/ \bar{U}_{z,c} $")
+plt.ylabel(r"$\sqrt{\overline{u_r'^2}}/ \bar{U}_{z,c}$")
 plt.xlim((0, 75))
 plt.xticks([0, 20, 40, 60])
-plt.title('reynolds stress zz')
 plt.legend()
-plt.grid(True)
-plt.show()
+finalize_plot("cl_reynolds_stress_rr")
 
-########## reynolds stress rr on CL ###############
+# 6. Profiles: Reynolds stress rr
+plt.figure(figsize=(8, 4))
+for z_D in STATIONS:
+    for m in MODELS:
+        plot_settings = MODEL_CFG[m].copy()
 
-plt.figure()
+        # Only keep the label for the last station to avoid legend clutter
+        if z_D != STATIONS[-1]:
+            plot_settings['label'] = ""
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
+                 PROF_results[m][f'vv_zd{z_D}'] /
+                 PROF_results[m][f'Uz_zd{z_D}'][0]**2,
+                 **plot_settings, alpha=STATION_ALPHAS[z_D])
+plt.xlabel(r'$\eta$')
+plt.ylabel(r"$\overline{u_r' u_r'}/ \bar{U}_{z,c}^2$")
+plt.xlim((0, 0.4))
+plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
+plt.legend()
+finalize_plot("profile_reynolds_rr")
+
+# 7. Profiles: Reynolds stress zz
+plt.figure(figsize=(8, 4))
+for z_D in STATIONS:
+    for m in MODELS:
+        plot_settings = MODEL_CFG[m].copy()
+
+        # Only keep the label for the last station to avoid legend clutter
+        if z_D != STATIONS[-1]:
+            plot_settings['label'] = ""
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
+                 PROF_results[m][f'uu_zd{z_D}'] /
+                 PROF_results[m][f'Uz_zd{z_D}'][0]**2,
+                 **plot_settings, alpha=STATION_ALPHAS[z_D])
+plt.xlabel(r'$\eta$')
+plt.ylabel(r"$\overline{u_z' u_z'}/ \bar{U}_{z,c}^2$")
+plt.xlim((0, 0.4))
+plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
+plt.legend()
+finalize_plot("profile_reynolds_zz")
+
+# 8. Profiles: Reynolds stress rz (Shear)
+plt.figure(figsize=(8, 4))
+for z_D in STATIONS:
+    for m in MODELS:
+        plot_settings = MODEL_CFG[m].copy()
+
+        # Only keep the label for the last station to avoid legend clutter
+        if z_D != STATIONS[-1]:
+            plot_settings['label'] = ""
+        plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
+                 PROF_results[m][f'uv_zd{z_D}'] /
+                 PROF_results[m][f'Uz_zd{z_D}'][0]**2,
+                 **plot_settings, alpha=STATION_ALPHAS[z_D])
+plt.xlabel(r'$\eta$')
+plt.ylabel(r"$\overline{u_r' u_z'}/ \bar{U}_{z,c}^2$")
+plt.xlim((0, 0.4))
+plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
+plt.legend()
+finalize_plot("profile_reynolds_rz")
+
+
+#### computing decay constant #####
+
+def compute_jet_constants(z_D, inv_Uz, start_zD=25):
+    # Filter for the fully developed region
+    mask = z_D > start_zD
+    x = z_D[mask]
+    y = inv_Uz[mask]
+
+    # Linear fit: y = m*x + c
+    m, c = np.polyfit(x, y, 1)
+
+    Bu = 1 / m
+    z0 = -c / m
+
+    return Bu, z0
+
+
+# Example usage for your models:
 for m in MODELS:
-    plt.plot(
-        CL_results[m]['x'],
-        np.sqrt(CL_results[m]['vv'])/CL_results[m]['Uz'],
-        color=MODEL_CFG[m]['color'],
-        linestyle=MODEL_CFG[m]['ls'],
-        linewidth=MODEL_CFG[m]['lw'],
-        label=MODEL_CFG[m]['label']
-    )
-plt.xlabel(r'$z/D$')
-plt.ylabel(r"$\sqrt{\bar{u_r'^2}}/ \bar{U}_{z,c} $")
-plt.xlim((0, 75))
-plt.xticks([0, 20, 40, 60])
-plt.title('reynolds stress rr')
-plt.legend()
-plt.grid(True)
-plt.show()
-
-########## reynolds stress rr at zd locations ###############
-
-plt.figure()
-for z_D in STATIONS:
-    for m in MODELS:
-        plt.plot(
-            PROF_results[m][f'r_zd{z_D}']/z_D,
-            PROF_results[m][f'vv_zd{z_D}'] /
-            PROF_results[m][f'Uz_zd{z_D}'][0]**2,
-            color=MODEL_CFG[m]['color'],
-            linestyle=MODEL_CFG[m]['ls'],
-            linewidth=MODEL_CFG[m]['lw'],
-            alpha=STATION_ALPHAS[z_D],
-            label=current_label
-        )
-plt.xlabel(r'$\eta$')
-plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
-plt.xlim((0, 0.4))
-plt.title('reynolds stress rr')
-plt.legend()
-plt.grid(True)
-plt.show()
-
-########## reynolds stress zz at zd locations ###############
-
-plt.figure()
-for z_D in STATIONS:
-    for m in MODELS:
-        plt.plot(
-            PROF_results[m][f'r_zd{z_D}']/z_D,
-            (PROF_results[m][f'uu_zd{z_D}']) /
-            PROF_results[m][f'Uz_zd{z_D}'][0]**2,
-            color=MODEL_CFG[m]['color'],
-            linestyle=MODEL_CFG[m]['ls'],
-            linewidth=MODEL_CFG[m]['lw'],
-            alpha=STATION_ALPHAS[z_D],
-            label=current_label
-        )
-plt.xlabel(r'$\eta$')
-plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
-plt.xlim((0, 0.4))
-plt.title('reynolds stress zz')
-plt.legend()
-plt.grid(True)
-plt.show()
-
-########## reynolds stress rz at zd locations ###############
-
-plt.figure()
-for z_D in STATIONS:
-    for m in MODELS:
-        plt.plot(
-            PROF_results[m][f'r_zd{z_D}']/z_D,
-            (PROF_results[m][f'uv_zd{z_D}']) /
-            PROF_results[m][f'Uz_zd{z_D}'][0]**2,
-            color=MODEL_CFG[m]['color'],
-            linestyle=MODEL_CFG[m]['ls'],
-            linewidth=MODEL_CFG[m]['lw'],
-            alpha=STATION_ALPHAS[z_D],
-            label=current_label
-        )
-plt.xlabel(r'$\eta$')
-plt.ylabel(r"$\bar{u'_i u'_j}/ \bar{U}_{z,c}^2 $")
-plt.xlim((0, 0.4))
-plt.title('reynolds stress rz')
-plt.legend()
-plt.grid(True)
-plt.show()
+    Bu, z0 = compute_jet_constants(CL_results[m]['x'], CL_results[m]['inv_Uz'])
+    print(f"Model {m}: Bu = {Bu:.3f}, z0/D = {z0:.3f}")
 
 
-########## Decay constant Bu ###############
-plt.figure()
+def compute_spreading_rate(m, stations, prof_data):
+    r_half_list = []
+    z_list = []
+
+    for z_D in stations:
+        # Already r/D if D was set to 1 or handled in get_data
+        r = prof_data[m][f'r_zd{z_D}']
+        Uz = prof_data[m][f'Uz_zd{z_D}']
+        Uz_center = Uz[0]
+
+        # Interpolate to find r where Uz/Uz_center = 0.5
+        # We only look at the positive r-branch
+        f_interp = interp1d(Uz/Uz_center, r, kind='linear')
+        try:
+            r_half = f_interp(0.5)
+            r_half_list.append(r_half)
+            z_list.append(z_D)
+        except ValueError:
+            print(f"Warning: Could not find r0.5 for {m} at z/D={z_D}")
+
+    # Linear fit: r_half = S * z + C
+    S, C = np.polyfit(z_list, r_half_list, 1)
+    z0_spreading = -C / S
+
+    return S, z0_spreading
+
+
+# Calculate and print for all models
+print("\n--- Jet Spreading Analysis ---")
 for m in MODELS:
-    plt.plot(
-        CL_results[m]['x'],
-        CL_results[m]['Uz'] / CL_results[m]['Uz'][0] * (CL_results[m]['x']),
-        color=MODEL_CFG[m]['color'],
-        linestyle=MODEL_CFG[m]['ls'],
-        linewidth=MODEL_CFG[m]['lw'],
-        label=MODEL_CFG[m]['label']
-    )
-plt.xlabel(r'$z/D$')
-plt.ylabel('$U_{exit}/U_{CL}$')
-plt.xlim((0, 75))
-plt.xticks([0, 20, 40, 60])
-plt.title('Centerline Velocity Decay')
-plt.legend()
-plt.grid(True)
-plt.show()
+    S, z0_s = compute_spreading_rate(m, STATIONS, PROF_results)
+    print(f"Model {m}: Spreading Rate (S) = {S:.4f}, z0/D = {z0_s:.3f}")
