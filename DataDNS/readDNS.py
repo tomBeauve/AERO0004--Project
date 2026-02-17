@@ -131,6 +131,18 @@ k_CL = 1/2 * (ur2_CL + uz2_CL + uphi2_CL)
 # plt.plot(CL, np.sqrt(k_CL)/UzCL)
 # plt.show()
 
+# eddy viscosity profiles
+dUz_dr_45 = np.gradient(Uz_zd45, r_profiles_45)
+nut_zd45 = -ur_uz_zd45 / (dUz_dr_45 + 1e-10)
+dUz_dr_35 = np.gradient(Uz_zd45, r_profiles_35)
+nut_zd35 = -ur_uz_zd35 / (dUz_dr_35 + 1e-10)
+dUz_dr_25 = np.gradient(Uz_zd45, r_profiles)
+nut_zd25 = -ur_uz_zd25 / (dUz_dr_25 + 1e-10)
+dUz_dr_55 = np.gradient(Uz_zd55, r_profiles_55)
+nut_zd55 = -ur_uz_zd55 / (dUz_dr_55 + 1e-10)
+dUz_dr_65 = np.gradient(Uz_zd65, r_profiles_65)
+nut_zd65 = -ur_uz_zd65 / (dUz_dr_65 + 1e-10)
+
 
 ##### Put quantities of interest inside CSV files ####
 
@@ -173,7 +185,14 @@ df_profiles = pd.DataFrame({
     "uv_zd35": ur_uz_zd35,
     "uv_zd45": ur_uz_zd45,
     "uv_zd55": ur_uz_zd55,
-    "uv_zd65": ur_uz_zd65
+    "uv_zd65": ur_uz_zd65,
+
+    "nut_zd25": nut_zd25,
+    "nut_zd35": nut_zd35,
+    "nut_zd45": nut_zd45,
+    "nut_zd55": nut_zd55,
+    "nut_zd65": nut_zd65
+
 })
 df_CL.to_csv("DNS_processed_CL.csv", index=False)
 df_profiles.to_csv("DNS_processed_profiles.csv", index=False)

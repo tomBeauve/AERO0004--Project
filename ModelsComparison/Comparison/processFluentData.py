@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
 import os
+import matplotlib.pyplot as plt
 
 # Configuration
-MODEL = 'keps2'
+MODEL = 'komSST'
 INPUT_FILE = f'rawData/solutionData_{MODEL}.csv'
 RHO = 1
 U_BULK = 1.0
@@ -68,7 +69,7 @@ def process_jet_data(filename):
     if profile_list:
         final_profiles = pd.concat(profile_list)
         output_cols = ['x-coordinate', 'y-coordinate',
-                       'axial-velocity', 'radial-velocity', 'uu', 'vv', 'uv']
+                       'axial-velocity', 'radial-velocity', 'uu', 'vv', 'uv', 'viscosity-turb']
         final_profiles[output_cols].to_csv(
             f'cleanData/profiles_{MODEL}.csv', index=False)
         print(

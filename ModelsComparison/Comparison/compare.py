@@ -47,6 +47,7 @@ def get_model_data(model_name):
             prof_arrays[f'uv_zd{z_D}'] = station_df['uv'].values
             prof_arrays[f'uu_zd{z_D}'] = station_df['uu'].values
             prof_arrays[f'vv_zd{z_D}'] = station_df['vv'].values
+            prof_arrays[f'nut_zd{z_D}'] = station_df['viscosity-turb'].values
 
     return cl_arrays, prof_arrays
 
@@ -81,6 +82,7 @@ for z_D in STATIONS:
     PROF_results["dns"][f'uu_zd{z_D}'] = df_dns_prof[f'uu_zd{z_D}'].values
     PROF_results["dns"][f'vv_zd{z_D}'] = df_dns_prof[f'vv_zd{z_D}'].values
     PROF_results["dns"][f'uv_zd{z_D}'] = df_dns_prof[f'uv_zd{z_D}'].values
+    PROF_results["dns"][f'nut_zd{z_D}'] = df_dns_prof[f'nut_zd{z_D}'].values
 
 
 MODELS.append("dns")
@@ -263,8 +265,8 @@ plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
 plt.legend()
 finalize_plot("profile_reynolds_rz")
 
-
 #### computing decay constant #####
+
 
 def compute_jet_constants(z_D, inv_Uz, start_zD=25):
     # Filter for the fully developed region

@@ -95,7 +95,7 @@ output_dir.mkdir(exist_ok=True)
 slide_params = {
     # Text Sizes (Large for visibility)
     'font.size': 20,           # General default
-    'axes.labelsize': 28,      # x and y labels
+    'axes.labelsize': 40,      # x and y labels
     'axes.titlesize': 24,      # Title
     'xtick.labelsize': 20,     # Tick numbers
     'ytick.labelsize': 20,
@@ -125,6 +125,13 @@ slide_params = {
     'figure.figsize': (12, 9),   # 16:9 Aspect Ratio by default
 }
 
+slide_params.update({
+    'text.usetex': False,
+    'mathtext.fontset': 'stix',
+    'mathtext.rm': 'STIXGeneral',
+    'mathtext.it': 'STIXGeneral:italic',
+    'mathtext.bf': 'STIXGeneral:bold',
+})
 
 plt.rcParams.update(slide_params)
 
@@ -168,9 +175,9 @@ for m in MODELS:
     plt.plot(CL_results[m]['x'], CL_results[m]['inv_Uz'], **MODEL_CFG[m])
     plt.text(CL_results[m]['x'][-1] + 1, CL_results[m]['inv_Uz'][-1], MODEL_CFG[m]['label'],
              color=MODEL_CFG[m]['color'],
-             va='center', fontweight='bold', fontsize=22)
+             va='center', fontweight='bold', fontsize=26)
 plt.xlabel(r'$z/D$')
-plt.ylabel(r'$ \frac{U_{exit}}{U_{z,CL}}$', fontsize=32)
+plt.ylabel(r'$ \frac{U_{exit}}{U_{z,CL}}$', fontsize=50)
 
 plt.xlim((0, 75))
 plt.xticks([0, 20, 40, 60])
@@ -198,13 +205,13 @@ for z_D in STATIONS:
                 yLoc = 0.3
             plt.text(xLoc, yLoc, MODEL_CFG[m]['label'],
                      color=MODEL_CFG[m]['color'],
-                     va='center', fontweight='bold', fontsize=22)
+                     va='center', fontweight='bold', fontsize=26)
         plt.plot(PROF_results[m][f'r_zd{z_D}'] / z_D,
                  PROF_results[m][f'Uz_zd{z_D}'] /
                  PROF_results[m][f'Uz_zd{z_D}'][0],
                  **plot_settings, alpha=STATION_ALPHAS[z_D])
 plt.xlabel(r'$\eta = r/z$', loc=('center'))
-plt.ylabel(r'$\frac{\bar{U}_z}{\bar{U}_{z,c}}$', fontsize=32)
+plt.ylabel(r'$\frac{\bar{U}_z}{\bar{U}_{z,c}}$', fontsize=50)
 plt.xlim((0, 0.4))
 plt.ylim((0, None))
 plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
@@ -218,9 +225,9 @@ for m in MODELS:
     plt.text(CL_results[m]['x'][-1] + 1, np.sqrt(CL_results[m]
              ['uu'][-1])/CL_results[m]['Uz'][-1], MODEL_CFG[m]['label'],
              color=MODEL_CFG[m]['color'],
-             va='center', fontweight='bold', fontsize=22)
+             va='center', fontweight='bold', fontsize=26)
 plt.xlabel(r'$z/D$')
-plt.ylabel(r"$\frac{\sqrt{\overline{u_z'^2}}}{\bar{U}_{z,c}}$", fontsize=32)
+plt.ylabel(r"$\frac{\sqrt{\overline{u_z'^2}}}{\bar{U}_{z,c}}$", fontsize=50)
 plt.xlim((0, 75))
 plt.xticks([0, 20, 40, 60])
 plt.yticks([0.05, 0.13,  0.235, 0.3], ["0.05", "0.13", "0.24", "0.3"])
@@ -248,13 +255,13 @@ for z_D in STATIONS:
                 yLoc = 0.025
             plt.text(xLoc, yLoc, MODEL_CFG[m]['label'],
                      color=MODEL_CFG[m]['color'],
-                     va='center', fontweight='bold', fontsize=22)
+                     va='center', fontweight='bold', fontsize=26)
         plt.plot(PROF_results[m][f'r_zd{z_D}']/z_D,
                  PROF_results[m][f'uv_zd{z_D}'] /
                  PROF_results[m][f'Uz_zd{z_D}'][0]**2,
                  **plot_settings, alpha=STATION_ALPHAS[z_D])
 plt.xlabel(r'$\eta$')
-plt.ylabel(r"$\frac{\overline{u_r' u_z'}}{\bar{U}_{z,c}^2}$", fontsize=32)
+plt.ylabel(r"$\frac{\overline{u_r' u_z'}}{\bar{U}_{z,c}^2}$", fontsize=50)
 plt.xlim((0, 0.4))
 plt.ylim((-0.0001, None))
 plt.xticks([0, 0.1, 0.2, 0.3, 0.4])
@@ -301,7 +308,7 @@ for m in MODELS:
         yloc = 0
     plt.text(z_fit[-1] + 1, S * z_fit[-1] + C + yloc, MODEL_CFG[m]['label'],
              color=MODEL_CFG[m]['color'],
-             va='center', fontweight='bold', fontsize=22)
+             va='center', fontweight='bold', fontsize=26)
 
 plt.xlabel(r'$z/D$')
 plt.ylabel(r'$r_{1/2}/D$')
@@ -350,7 +357,7 @@ plt.annotate(
     ha='center',
     va='center',
     color=color_uz,
-    fontsize=30
+    fontsize=40
 )
 
 plt.annotate(
@@ -361,7 +368,7 @@ plt.annotate(
     ha='center',
     va='center',
     color=color_ur,
-    fontsize=30
+    fontsize=40
 )
 plt.yticks([0, 0.04, 0.08])
 finalize_plot("bar_reynolds_centerline", show_grid=False)

@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-meshLabels = ["xxfine", "xfine", "fine", "mid", "coarse"]
+meshLabels = ["xfine", "fine", "mid"]
 uz45paths = [f"clean/{mesh}Uz_zd45.csv" for mesh in meshLabels]
 uz5paths = [f"clean/{mesh}Uz_zd5.csv" for mesh in meshLabels]
 
@@ -13,7 +13,11 @@ for i in range(len(meshLabels)):
 
     plt.plot(y45, uz45, label=meshLabels[i])
 
+plt.ylabel(r"$U_z / U_{z,CL}$")
+plt.xlabel(r"$\eta$")
 plt.legend()
+plt.grid(True, alpha=0.2)
+plt.savefig("uz45Plot.svg", dpi=300)
 plt.show()
 
 for i in range(len(meshLabels)):
